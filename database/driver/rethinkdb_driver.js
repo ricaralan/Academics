@@ -71,8 +71,8 @@ DB.prototype.createTables = function (connection){
 };
 
 DB.prototype.makeDB = function (connection) {
-	this.createDB();
-	this.createTables();
+	this.createDB(connection);
+	this.createTables(connection);
 };
 
 DB.prototype.getRow = function (connection, table, valueId, callback) {
@@ -95,13 +95,14 @@ DB.prototype.delete = function (connection, table, valueId, callback) {
 
 DB.prototype.tableChanges = function (connection, table, callback) {
 	this.r.db(this.getDBName()).table(table).changes().run(connection, callback);
+
 }
 
 var db = new DB();
 
-	/*
 db.connect(function(err, connection){
-	//db.makeDB(connection);
+	db.makeDB(connection);
+	/*
 	db.insert(connection, "usuario", {
 		"id_usuario" : 2,
 		"usuario" : "alan",
@@ -142,8 +143,8 @@ db.connect(function(err, connection){
 	db.tableChanges(connection, "usuario", function(err, cursor){
 		cursor.each(console.log);
 	});
-});
 	*/
+});
 
 
 module.exports = db;
