@@ -38,7 +38,7 @@ app.use('/', login);
 
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/facebook',
-  passport.authenticate('facebook')
+  passport.authenticate('facebook', { scope: ['read_stream', 'publish_actions'] })
 );
 /* Proceso de autenticación... esperando el token de acceso */
 app.get('/auth/twitter/callback', passport.authenticate('twitter', { 
