@@ -3,11 +3,14 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require("express-session");
 var bodyParser = require('body-parser');
+var passport = require("passport");
+require("./routes/passport/passport")(passport);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var controllerA = require('./routes/controllers/controller');
+var login = require('./routes/login/login');
 
 var app = express();
 
@@ -22,8 +25,32 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret : "Athenea@KeySession|~.^.~|=KEEPSESSION",
+  resave: true,
+  saveUninitialized: true
+}))
+app.use(passport.initialize());
+app.use(passport.session());
 
-app.use('/', controllerA);
+
+app.use('/', login);
+
+app.get('/auth/twitter', passport.authenticate('twitter'));
+app.get('/auth/facebook',
+  passport.authenticate('facebook', { scope: ['read_stream', 'publish_actions'] })
+);
+/* Proceso de autenticación... esperando el token de acceso */
+app.get('/auth/twitter/callback', passport.authenticate('twitter', { 
+  successRedirect: '/inicio',
+  failureRedirect: '/' 
+}));
+app.get("/auth/facebook/callback", passport.authenticate("facebook", {
+  successRedirect : "/inicio",
+  failureRedirect : "/"
+}));
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

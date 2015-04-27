@@ -75,7 +75,7 @@ DB.prototype.makeDB = function (connection) {
 	this.createTables(connection);
 };
 
-DB.prototype.getRow = function (connection, table, valueId, callback) {
+DB.prototype.findById = function (connection, table, valueId, callback) {
 	this.r.db(this.getDBName()).table(table).get(valueId).run(connection, callback);
 };
 
@@ -101,8 +101,8 @@ DB.prototype.tableChanges = function (connection, table, callback) {
 var db = new DB();
 
 db.connect(function(err, connection){
-	db.makeDB(connection);
 	/*
+	db.makeDB(connection);
 	db.insert(connection, "usuario", {
 		"id_usuario" : 2,
 		"usuario" : "alan",
@@ -133,7 +133,7 @@ db.connect(function(err, connection){
 			console.log(results);
 		}
 	});
-	db.getRow(connection, "usuario", 2, function (err, results) {
+	db.findById(connection, "usuario", 2, function (err, results) {
 		if (err) {
 			console.log("ERROR get data rethinkdb: " +err.message);
 		} else {
