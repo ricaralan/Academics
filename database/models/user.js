@@ -1,3 +1,9 @@
+/**
+*	Modelo de la tabla usuario que hace más fácil 
+*	la manipulación de los datos de esta tabla
+*
+*	@author Team Academics
+*/
 var db = require("./../driver/rethinkdb_driver");
 var socket = require("socket.io");
 
