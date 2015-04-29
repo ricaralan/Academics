@@ -1,7 +1,7 @@
 /***
 *	Esta librería facilita el uso y manipulación de la base de datos
 *
-*	@version 0.0.1
+*	@version 0.0.2
 *	@author Team Academics
 */
 
