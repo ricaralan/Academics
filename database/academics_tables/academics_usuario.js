@@ -1,6 +1,6 @@
 module.exports = {
 	table : {
 		name : "usuario",
-		key  : "id_usuario"
+		key  : "user_id"
 	}
 };

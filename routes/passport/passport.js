@@ -10,7 +10,7 @@ var FacebookStrategy	= require("passport-facebook").Strategy;
 // Este modulo contiene la configuración de API keys para Academics
 var configPassport = require("./configPassport");
 
-function authenticationPassport(accessToken, refreshToken, profile, done) {
+function authenticationPassport (accessToken, refreshToken, profile, done) {
 		userModel.findById(profile.id, function(err, user) {
 			if (err) {
 				console.log("ERROR rethinkdb getUserById: " + err.message);
@@ -19,9 +19,11 @@ function authenticationPassport(accessToken, refreshToken, profile, done) {
 				return done(null, user);
 			} else {
 				// Se tiene que crear el usuario
-				console.log(JSON.stringify(profile));
+				console.log(
+					JSON.stringify(profile)
+					);
 				userModel.createNewUser({
-					id_usuario : profile.id,
+					user_id : profile.id,
 					user_name  : profile.displayName,
 					user_photo : profile.photos[0].value
 				}, function (err, results) {
@@ -47,7 +49,6 @@ module.exports = function (passport) {
 
 	// Deserializa el usuario en la sesión para poder utilizalo
 	passport.deserializeUser(function (obj, done){
-		console.log("Deserializa");
 		done(null, obj);
 	});
 
@@ -55,14 +56,14 @@ module.exports = function (passport) {
 	passport.use(new TwitterStrategy({
 		consumerKey 	: configPassport.twitter.key,
 		consumerSecret  : configPassport.twitter.secret,
-		callbackURL 	: "/auth/twitter/callback"
+		callbackURL 	: configPassport.twitter.callbackURL
 	}, authenticationPassport));
 
 	// Configuración de autenticación con facebook
 	passport.use(new FacebookStrategy({
 		clientID 	  : configPassport.facebook.key,
 		clientSecret  : configPassport.facebook.secret,
-		callbackURL   : "/auth/facebook/callback",
+		callbackURL   : configPassport.facebook.callbackURL,
 		profileFields : ["id", "displayName", "photos", "emails"]
 	}, authenticationPassport));
 
