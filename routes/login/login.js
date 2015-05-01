@@ -3,10 +3,12 @@ var router  = express.Router();
 
 router.get("/", function (req, res) {
 	if (req.user == null) {
+		// No hay un usuario logueado
 		res.render("login/login", {
 			title : "login Academics"
 		});
 	} else {
+		// Hay un usuario logueado
 		res.render("academics_views", {
 		    title : "Academics",
 		    user  : req.user
@@ -17,14 +19,6 @@ router.get("/", function (req, res) {
 router.get("/logout", function (req, res) {
 	req.logout();
 	res.redirect("/");
-});
-
-router.get("/inicio", function (req, res) {
-  res.render("index", {
-    title : "Academics",
-    user  : req.user
-  });
-  console.log("Session iniciada correctamente");
 });
 
 module.exports = router;
