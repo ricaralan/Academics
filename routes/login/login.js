@@ -2,10 +2,16 @@ var express = require("express");
 var router  = express.Router();
 
 router.get("/", function (req, res) {
-	res.render("login/login", {
-		title : "login Academics"
-	});
-	console.log("Login...");
+	if (req.user == null) {
+		res.render("login/login", {
+			title : "login Academics"
+		});
+	} else {
+		res.render("academics_views", {
+		    title : "Academics",
+		    user  : req.user
+		  });
+	}
 });
 
 router.get("/logout", function (req, res) {

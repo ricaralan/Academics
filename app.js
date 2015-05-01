@@ -42,11 +42,11 @@ app.get('/auth/facebook',
 );
 /* Proceso de autenticación... esperando el token de acceso */
 app.get('/auth/twitter/callback', passport.authenticate('twitter', { 
-  successRedirect: '/inicio',
+  successRedirect: '/',
   failureRedirect: '/' 
 }));
 app.get("/auth/facebook/callback", passport.authenticate("facebook", {
-  successRedirect : "/inicio",
+  successRedirect : "/",
   failureRedirect : "/"
 }));
 
