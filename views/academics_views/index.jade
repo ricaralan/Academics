@@ -8,13 +8,12 @@ block content
                     a(href="/") Academics
                 div(id="header_menu")
                     ul(id="menu-horizontal-header")
-                        li(class="dropdown-menu" dropdownId="subMenuConf")
-                            a
+                        li
+                            a(href="#", class="dropdown-menu" dropdownId="subMenuConf")
                                 img(src="#{user.user_photo}" id="user-photo-menu")
                                 i(class="fa fa-angle-down")
-                               ul(id="subMenuConf", class="displayNone subMenu")
+                                ul(id="subMenuConf", class="displayNone subMenu")
                                     li
-                                        a(href="/logout") salir
+                                        a(href="/logout", class="linkSubMenu") salir
         div(class="container")
-            h1= title
             

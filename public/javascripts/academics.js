@@ -1,18 +1,20 @@
 Academics = function () {};
 
-Academics.prototype.initDropDownClass = function () {
+Academics.prototype.initDropDownClass = function (e) {
 	dropdown = document.getElementsByClassName("dropdown-menu");
 	for (var i = 0; i < dropdown.length; i++) {
-		dropdown[i].addEventListener("click", function () {
-			idInnerDown = this.getAttribute("dropdownId");
-			innerDropdown = document.getElementById(idInnerDown);
-			setTimeout(function(){
-
+		var idInnerDown = dropdown[i].getAttribute("dropdownId");
+		var innerDropdown = document.getElementById(idInnerDown);
+		dropdown[i].addEventListener("focus", function () {
 			innerDropdown.style.display = "block";
-			console.log("hide/show");
-			}, 100);
+		});
+		dropdown[i].addEventListener("focusout", function () {
+			setTimeout(function () {
+				innerDropdown.style.display = "none";
+			}, 200)
 		});
 	}
+	return false;
 };
 
 window.addEventListener("load", function (e) {
