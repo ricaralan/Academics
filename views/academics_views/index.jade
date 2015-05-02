@@ -1,8 +1,20 @@
-extends ../layout
+extends mainLayout
 
 block content
-  h1= title
-  p
-      img(src="#{user.user_photo}")
-      label Welcome to #{title} #{user.user_name}
-  a(href="/logout") salir
+    header
+        nav(id="headerMenu")
+            div(class="container")
+                div(id="header_title")
+                    a(href="/") Academics
+                div(id="header_menu")
+                    ul(id="menu-horizontal-header")
+                        li(class="dropdown-menu" dropdownId="subMenuConf")
+                            a
+                                img(src="#{user.user_photo}" id="user-photo-menu")
+                                i(class="fa fa-angle-down")
+                               ul(id="subMenuConf", class="displayNone subMenu")
+                                    li
+                                        a(href="/logout") salir
+        div(class="container")
+            h1= title
+            
