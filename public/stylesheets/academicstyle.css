@@ -1,12 +1,42 @@
 *{
 	margin: 0;
 }
+body {
+  width: 100%;
+  height: 100%;
+}
+.slideout-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  width: 256px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: none;
+}
+
+.slideout-panel {
+  position: relative;
+  z-index: 1;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+  overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+  display: block;
+}
 a{
 	text-decoration: none;
 	color: #000;
 }
-
-#headerMenu {
+.headerMenu {
 	background-color: #fff;
 	border: solid 1px rgba(0, 0, 0, .1);
 	height: 50px;
@@ -17,6 +47,7 @@ a{
 	position: relative;
 	width: 7em;
 	padding-top: 7px;
+	margin-left: 50px;
 }
 #header_title a{
 	font-size: 30px;
@@ -72,15 +103,18 @@ a{
 .displayNone{
 	display: none;
 }
-
-.subMenu {
-	background-color: #fff;
+.absolute{
 	position: absolute;
+}
+.subMenu {
+	position: absolute;
+	background-color: #fff;
 	border: solid 1px rgba(0, 0, 0, .1);
 	border-radius: 3px;
 	right: 5px;
     padding: 0;
     margin:0;
+    z-index: 3;
 }
 
 .subMenu:after {
@@ -104,7 +138,7 @@ a{
 .linkSubMenu{
 	display: block;
 	padding-left: 30px;
-	font-size: 17px;
+	font-size: 15px;
 	margin-left: -10px;
 	font-family: 'Amiri', serif;
 }
@@ -117,7 +151,6 @@ a{
   	position: relative;
   	margin-right: auto;
   	margin-left: auto;
-  	height: 100%;
 }
 @media (min-width: 768px) {
   	.container {
@@ -133,4 +166,44 @@ a{
   	.container {
     	width: 1070px;
   	}
+}
+#toggle-button-left-menu{
+	position: absolute;
+	padding: 10px;
+	font-size: 29px;
+	z-index: 10;
+}
+#toggle-button-left-menu:hover{
+	box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, .2);
+	cursor: pointer;
+}
+#menuLeft {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(145deg, #1D1F20, #404348);
+	color: #fff;
+}
+
+#tituloMenuLeft {
+	color: #fff;
+	padding-top: 15px;
+	padding-left: 30px;
+	font-family: 'Amiri', serif;
+}
+
+#panel {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: #F7F7F7;
+}
+
+#panelModal {
+	background-color: rgba(255, 255, 255, .8);
+	display: none;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 3;
 }

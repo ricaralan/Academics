@@ -1,8 +1,14 @@
 extends mainLayout
 
 block content
-    header
-        nav(id="headerMenu")
+    nav(id="menuLeft", hidden)
+        header
+            h3(id="tituloMenuLeft") Menu
+
+    div(id="panel")
+        div(id="panelModal")
+        nav(class="headerMenu")
+            i(class="fa fa-bars" id="toggle-button-left-menu")
             div(class="container")
                 div(id="header_title")
                     a(href="/") Academics
@@ -14,6 +20,8 @@ block content
                                 i(class="fa fa-angle-down")
                                 ul(id="subMenuConf", class="displayNone subMenu")
                                     li
-                                        a(href="/logout", class="linkSubMenu") salir
+                                        a(href="#", class="linkSubMenu") Configuración
+                                    li
+                                        a(href="/logout", class="linkSubMenu") Salir
         div(class="container")
-            
+        
