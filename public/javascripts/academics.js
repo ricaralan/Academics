@@ -17,6 +17,19 @@ Academics.prototype.initDropDownClass = function (e) {
 	return false;
 };
 
+Academics.prototype.slideoutToggle = function (slideout, button) {
+	modal = document.getElementById("panelModal");
+	if ( !slideout._opened ) {
+		slideout.open();
+		modal.style.display = "block";
+		button.className = "fa fa-close";
+	}else {
+		slideout.close();
+		modal.style.display = "none";
+		button.className = "fa fa-bars";
+	}
+};
+
 window.addEventListener("load", function (e) {
 	new Academics().initDropDownClass();
 	
@@ -27,8 +40,8 @@ window.addEventListener("load", function (e) {
 		'tolerance': 70
 	});
 	
-	document.getElementById("toggle-button-left-menu")
-	.addEventListener('click', function() {
-        slideout.toggle();
+	var toggeButtonLeftMenu = document.getElementById("toggle-button-left-menu");
+	toggeButtonLeftMenu.addEventListener('click', function() {
+        new Academics().slideoutToggle(slideout, toggeButtonLeftMenu);
     });
 });

@@ -162,6 +162,9 @@ a{
   	.container {
     	width: 1070px;
   	}
+  	#header_title {
+		margin-left: 0px;
+	}
 }
 #toggle-button-left-menu{
 	position: absolute;
@@ -193,6 +196,7 @@ a{
 	height: 100%;
 	width: 100%;
 	background-color: #F7F7F7;
+	box-shadow: -7px 0px 7px 0px rgba(0, 0, 0, .3);
 }
 
 #panelModal {
