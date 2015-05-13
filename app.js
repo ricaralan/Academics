@@ -1,16 +1,17 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
+var express  = require('express');
+var path     = require('path');
+var favicon  = require('serve-favicon');
+var logger   = require('morgan');
 var cookieParser = require('cookie-parser');
-var session = require("express-session");
+var session  = require("express-session");
 var bodyParser = require('body-parser');
 var passport = require("passport");
 require("./routes/passport/passport")(passport);
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var login = require('./routes/login/login');
+var routes  = require('./routes/index');
+var users   = require('./routes/users');
+var login   = require('./routes/login/login');
+var courses = require('./routes/courses/courses');
 
 var app = express();
 
@@ -50,7 +51,7 @@ app.get("/auth/facebook/callback", passport.authenticate("facebook", {
   failureRedirect : "/"
 }));
 
-
+app.use("/courses", courses);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

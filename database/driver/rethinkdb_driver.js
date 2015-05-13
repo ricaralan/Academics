@@ -16,7 +16,8 @@ var DB = function  () {
 		port: parseInt(process.env.RDB_PORT) || 28015,
 		dbName  : process.env.RDB_DB || 'academics_db',
 		tables:[
-	    	{descripcion : require("./../academics_tables/academics_usuario")}
+	    	{descripcion : require("./../academics_tables/academics_user")},
+	    	{descripcion : require("./../academics_tables/academics_note")}
 		]
 	};
 	// Objeto rethinkdb que ayuda a realizar las consultas a la DB de rethinkdb

@@ -4,7 +4,7 @@
 */
 module.exports = {
 	table : {
-		name : "usuario",
+		name : "user",
 		key  : "user_id"
 	}
 };
