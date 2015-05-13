@@ -10,7 +10,7 @@ router.get("/", function (req , res) {
 	} else {
 		// Hay un usuario logueado
 		res.render("academics_views/groups/", {
-			title : "Grupos "
+			title : "Academics - Grupos "
 		});
 		
 	}

@@ -1,10 +1,13 @@
 extends ../mainLayout
 
 block content
-    h3
-        strong Total Grupos
-        input(type="text", id="", placeholder="Name Your Group")
-        button  Create
+    div(ng-app="groups_module")
+        div(ng-controller="groupsController")
+            h3
+                strong Total Grupos
+                input(type="text", id="", placeholder="Name Your Group", ng-model="textCreateGroup")
+                //button(ng-click="createGroup()")  Create
+                button(id="btnCreateGroup")  Create
 
 
     script(type="text/javascript" src="/javascripts/angular_modules/groups_module.js")
