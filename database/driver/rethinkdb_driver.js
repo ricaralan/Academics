@@ -17,6 +17,7 @@ var DB = function  () {
 		dbName  : process.env.RDB_DB || 'academics_db',
 		tables:[
 	    	{descripcion : require("./../academics_tables/academics_user")},
+	    	{descripcion : require("./../academics_tables/academics_course")},
 	    	{descripcion : require("./../academics_tables/academics_note")}
 		]
 	};
