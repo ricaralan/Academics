@@ -11,6 +11,7 @@ require("./routes/passport/passport")(passport);
 var routes  = require('./routes/index');
 var users   = require('./routes/users');
 var login   = require('./routes/login/login');
+var group = require('./routes/group/group');
 var courses = require('./routes/courses/courses');
 
 var app = express();
@@ -51,6 +52,7 @@ app.get("/auth/facebook/callback", passport.authenticate("facebook", {
   failureRedirect : "/"
 }));
 
+app.use("/groups", group);
 app.use("/courses", courses);
 
 // catch 404 and forward to error handler
