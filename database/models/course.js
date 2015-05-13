@@ -15,4 +15,10 @@ CourseModel.prototype.setTableName = function(table) {
 	CourseModel.prototype.tableName = table;
 };
 
+CourseModel.prototype.createNewCourse = function (jsonDataNewCourse, callback) {
+	db.connect(function (err, connection) {
+		db.insert(connection, CourseModel.prototype.tableName, jsonDataNewCourse, callback);
+	});
+};
+
 module.exports = new CourseModel();
