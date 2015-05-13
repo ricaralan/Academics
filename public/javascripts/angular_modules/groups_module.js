@@ -7,9 +7,12 @@ app.controller ("groupsController", function ($scope, $http) {
 	};
 
 	$scope.createGroup = function () {
-		alert("I would like sleep" + $scope.textCreateGroup);
-		$http.post("URL").success(function (datos) {
-			console.log(datos);
+		$http.post("/groups/createGroup/"+ $scope.textCreateGroup)
+		.success(function (results) {
+			if (results.inserted) {
+				console.log(results.generated_keys[0]);
+				// TODO redirect to /group/result.generated_keys[0]
+			}
 		});
 	};
 

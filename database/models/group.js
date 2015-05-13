@@ -19,12 +19,12 @@ GroupModel.prototype.setTableName = function(table) {
 	db.connect(function (err, connection) {
 		db.findById(connection, GroupModel.prototype.tableName, userId, callback);
 	});
-};
-
-GroupModel.prototype.createNewUser = function (jsonDataNewUser, callback) {
-	db.connect(function (err, connection) {
-		db.insert(connection, GroupModel.prototype.tableName, jsonDataNewUser, callback);
-	});
 };*/
+
+GroupModel.prototype.createNewGroup = function (jsonDataNewGroup, callback) {
+	db.connect(function (err, connection) {
+		db.insert(connection, GroupModel.prototype.tableName, jsonDataNewGroup, callback);
+	});
+};
 
 module.exports = new GroupModel();
