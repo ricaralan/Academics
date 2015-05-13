@@ -15,6 +15,12 @@ CourseModel.prototype.setTableName = function(table) {
 	CourseModel.prototype.tableName = table;
 };
 
+CourseModel.prototype.findById = function (userId, callback) {
+	db.connect(function (err, connection) {
+		db.findById(connection, CourseModel.prototype.tableName, userId, callback);
+	});
+};
+
 CourseModel.prototype.createNewCourse = function (jsonDataNewCourse, callback) {
 	db.connect(function (err, connection) {
 		db.insert(connection, CourseModel.prototype.tableName, jsonDataNewCourse, callback);

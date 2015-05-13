@@ -17,7 +17,12 @@ router.get("/", function (req, res) {
 });
 
 router.get("/:idCourse", function (req, res) {
-	var idCourse = req.params.idCourse;
+	if (req.user != null) {
+		var idCourse = req.params.idCourse;
+		modelCourse.findById(idCourse, function (err, course) {
+			res.send(course);
+		});
+	}
 });
 
 router.post("/createCourse/:courseName", function (req, res) {

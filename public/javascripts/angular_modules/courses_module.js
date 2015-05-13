@@ -11,8 +11,7 @@ app.controller("coursesController", function ($scope, $http) {
 		$http.post("/courses/createCourse/" + $scope.textCreateCourse)
 		.success(function (results) {
 			if (results.inserted) {
-				console.log(results.generated_keys[0]);
-				// TODO redirect to /courses/results.generated_keys[0]
+				window.location = "/courses/" + results.generated_keys[0];
 			}
 		});
 	};
