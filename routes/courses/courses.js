@@ -28,9 +28,7 @@ router.post("/createCourse/:courseName", function (req, res) {
 			"user_id_course" : req.user.user_id,
 			"courseName" : courseName
 		}, function  (err, results) {
-			if (results.inserted == 1) {
-				res.send("El curso " + courseName + " se registro correctamente!");
-			}
+			res.send(results);
 		});
 	}
 });
