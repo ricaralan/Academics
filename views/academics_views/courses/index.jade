@@ -1,9 +1,11 @@
 extends ../mainLayout
 
 block content
-    h3 Courses
-    input(type="text", id="", placeholder="Name your course")
-    button(onclick="alert('hola mundo!');") Create
+    div(ng-app="courses_module")
+        div(ng-controller="coursesController")
+            h3 Courses
+            input(type="text", id="", placeholder="Name your course", ng-model="textCreateCourse")
+            button(id="btnCreateCourse") Create
 
     
     script(type="text/javascript", src="/javascripts/angular_modules/courses_module.js")
