@@ -18,6 +18,7 @@ var DB = function  () {
 		tables:[
 	    	{descripcion : require("./../academics_tables/academics_user")},
 	    	{descripcion : require("./../academics_tables/academics_course")},
+	    	{descripcion : require("./../academics_tables/academics_group")},
 	    	{descripcion : require("./../academics_tables/academics_note")}
 		]
 	};
