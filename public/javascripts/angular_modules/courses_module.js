@@ -8,8 +8,8 @@ app.controller("coursesController", function ($scope, $http) {
 	};
 
 	$scope.createCourse = function () {
-		alert("create curse " + $scope.textCreateCourse);
-		$http.post("URL").success(function (datos) {
+		$http.post("/courses/createCourse/" + $scope.textCreateCourse)
+		.success(function (datos) {
 			console.log(datos);
 		});
 	};
