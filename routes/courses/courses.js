@@ -10,8 +10,10 @@ router.get("/", function (req, res) {
 		});
 	} else {
 		// Hay un usuario logueado
+		modelCourse.
 		res.render("academics_views/courses/", {
-			title : "Academics - courses"
+			title : "Academics - courses",
+			user : req.user
 		});
 	}
 });

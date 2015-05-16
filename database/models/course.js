@@ -15,6 +15,11 @@ CourseModel.prototype.setTableName = function(table) {
 	CourseModel.prototype.tableName = table;
 };
 
+CourseModel.prototype.getUserCourses = function () {
+	db.connect(function (err, connection) {
+	});
+};
+
 CourseModel.prototype.findById = function (userId, callback) {
 	db.connect(function (err, connection) {
 		db.findById(connection, CourseModel.prototype.tableName, userId, callback);

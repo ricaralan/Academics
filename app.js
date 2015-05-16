@@ -40,7 +40,7 @@ app.use('/', login);
 
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/facebook',
-  passport.authenticate('facebook', { scope: ['read_stream', 'publish_actions'] })
+  passport.authenticate('facebook', { scope: ["user_friends","user_birthday","manage_notifications"] })
 );
 /* Proceso de autenticación... esperando el token de acceso */
 app.get('/auth/twitter/callback', passport.authenticate('twitter', { 

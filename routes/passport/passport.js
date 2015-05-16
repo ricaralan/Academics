@@ -64,7 +64,7 @@ module.exports = function (passport) {
 		clientID 	  : configPassport.facebook.key,
 		clientSecret  : configPassport.facebook.secret,
 		callbackURL   : configPassport.facebook.callbackURL,
-		profileFields : ["id", "displayName", "photos", "emails"]
+		profileFields : ["id", "displayName", "photos"]
 	}, authenticationPassport));
 
 };

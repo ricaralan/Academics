@@ -1,4 +1,4 @@
-var app = angular.module("courses_module", []);
+var app = angular.module("courses_module", ["academics_module"]);
 
 app.controller("coursesController", function ($scope, $http) {
 

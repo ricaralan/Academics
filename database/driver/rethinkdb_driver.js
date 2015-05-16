@@ -118,6 +118,10 @@ DB.prototype.makeDB = function (connection) {
 	this.createTables(connection);
 };
 
+DB.prototype.getDataTable = function (connection, table) {
+	this.r.db(this.getDBName()).table(table)
+};
+
 /**
 *	Buscar por ID en una tabla especifica
 *	Ejemplo:
