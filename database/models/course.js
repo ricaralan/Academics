@@ -15,8 +15,16 @@ CourseModel.prototype.setTableName = function(table) {
 	CourseModel.prototype.tableName = table;
 };
 
-CourseModel.prototype.getUserCourses = function () {
+/**
+*	Este metodo regresa los cursos creados por el usuario
+*/
+CourseModel.prototype.getUserCourses = function (userId, callback) {
 	db.connect(function (err, connection) {
+		db.getDataTableFilter(
+			connection,
+			CourseModel.prototype.tableName,
+			{user_id_course:userId},
+			callback);
 	});
 };
 

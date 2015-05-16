@@ -118,8 +118,15 @@ DB.prototype.makeDB = function (connection) {
 	this.createTables(connection);
 };
 
-DB.prototype.getDataTable = function (connection, table) {
-	this.r.db(this.getDBName()).table(table)
+DB.prototype.getR = function () {
+	return this.r.db(this.getDBName());
+};
+
+DB.prototype.getDataTableFilter = function (connection, table, jsonFilter, callback) {
+	this.getR().table(table).filter(jsonFilter)
+	.run(connection, function(err, cursor){
+		cursor.toArray(callback);
+	});
 };
 
 /**
@@ -133,7 +140,7 @@ DB.prototype.getDataTable = function (connection, table) {
 *	});
 */
 DB.prototype.findById = function (connection, table, valueId, callback) {
-	this.r.db(this.getDBName()).table(table).get(valueId).run(connection, callback);
+	this.getR().table(table).get(valueId).run(connection, callback);
 };
 
 /**
@@ -148,7 +155,7 @@ DB.prototype.findById = function (connection, table, valueId, callback) {
 *	});
 */
 DB.prototype.insert = function (connection, table, jsonDataInsert, callback) {
-	this.r.db(this.getDBName()).table(table).insert(jsonDataInsert)
+	this.getR().table(table).insert(jsonDataInsert)
 		.run(connection, callback);
 };
 
@@ -167,7 +174,7 @@ DB.prototype.insert = function (connection, table, jsonDataInsert, callback) {
 *	});
 */
 DB.prototype.update = function (connection, table, valueId, jsonDataUpdate, callback) {
-	this.r.db(this.getDBName()).table(table).get(valueId)
+	this.getR().table(table).get(valueId)
 		.update(jsonDataUpdate).run(connection, callback);
 };
 
@@ -183,11 +190,11 @@ DB.prototype.update = function (connection, table, valueId, jsonDataUpdate, call
 *	});
 */
 DB.prototype.delete = function (connection, table, valueId, callback) {
-	this.r.db(this.getDBName()).table(table).get(valueId).delete().run(connection, callback);
+	this.getR().table(table).get(valueId).delete().run(connection, callback);
 };
 
 DB.prototype.tableChanges = function (connection, table, callback) {
-	this.r.db(this.getDBName()).table(table).changes().run(connection, callback);
+	this.getR().table(table).changes().run(connection, callback);
 
 }
 

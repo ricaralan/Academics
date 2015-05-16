@@ -10,10 +10,12 @@ router.get("/", function (req, res) {
 		});
 	} else {
 		// Hay un usuario logueado
-		modelCourse.
-		res.render("academics_views/courses/", {
-			title : "Academics - courses",
-			user : req.user
+		modelCourse.getUserCourses(req.user.user_id, function (err, courses) {
+			res.render("academics_views/courses/", {
+				title : "Academics - courses",
+				user : req.user,
+				courses : courses
+			});
 		});
 	}
 });
