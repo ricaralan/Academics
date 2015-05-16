@@ -1,10 +1,8 @@
-extends mainLayout
-
+extends ../mainLayout
 block content
     div(ng-app="academics_module")
         app-for-users-academics(user-photo="#{user.user_photo}")
             div(class="container")
-                h1(style="text-align:center;font-family:cookie, cursive;padding:30px;background-color:#fff;border:solid 1px rgba(0, 0, 0, .1);margin-top:23px;font-size:90px;") Welcome to Academics
+                h1(style="text-align:center;font-family:cookie, cursive;padding:30px;background-color:#fff;border:solid 1px rgba(0, 0, 0, .1);margin-top:23px;font-size:90px;") Welcome couse #{course.courseName}
     script(type="text/javascript", src="/javascripts/angular_modules/academics_module.js")
     script(type="text/javascript", src="/javascripts/angular_modules/courses_module.js")
-

@@ -190,8 +190,8 @@ DB.prototype.tableChanges = function (connection, table, callback) {
 var db = new DB();
 
 db.connect(function(err, connection){
-	db.makeDB(connection);
 	/*
+	db.makeDB(connection);
 	db.tableChanges(connection, "usuario", function(err, cursor){
 		cursor.each(console.log);
 	});

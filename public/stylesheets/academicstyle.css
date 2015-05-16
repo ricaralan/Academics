@@ -5,61 +5,23 @@ body {
   width: 100%;
   height: 100%;
 }
-.slideout-menu {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 0;
-  width: 256px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  display: none;
-}
-
-.slideout-panel {
-  position: relative;
-  z-index: 1;
-}
-
-.slideout-open,
-.slideout-open body,
-.slideout-open .slideout-panel {
-  overflow: hidden;
-}
-
-.slideout-open .slideout-menu {
-  display: block;
-}
 a{
 	text-decoration: none;
 	color: #000;
 }
 .headerMenu {
-	background-color: #fff;
+	//background-color: #fff;
+	//background-color: #0B8AD9;
+	background-image: linear-gradient(145deg, #0B8AD9, #53A1FF);
 	border: solid 1px rgba(0, 0, 0, .1);
 	height: 50px;
-	position: relative;
+	width: 100%;
+	position: fixed;
+	color: #fff;
+	z-index: 3;
 	//overflow: hidden;
 }
-#header_title {
-	position: relative;
-	width: 7em;
-	padding-top: 7px;
-	margin-left: 50px;
-}
-#header_title a{
-	font-size: 30px;
-	padding-top: 23px;
-	padding-left: 23px;
-	padding-right: 23px;
-	padding-bottom: 8px;
-	text-decoration: none;
-	text-shadow: 1px 2px 3px rgba(0, 0, 0, .3);
-	color: #484646;
-	font-family: 'Cookie', cursive;
-}
+
 #header_menu{
 	position: absolute;
 	right: 0;
@@ -73,28 +35,6 @@ a{
 	margin-top: 2px;
 	width : 45px;
 }
-#menu-horizontal-header {
-	position: relative;
-	height: 100% !important;
-}
-
-#menu-horizontal-header li {
-	position: relative;
-	height: 100%;
-	display: inline-block;
-	padding-left: 10px;
-}
-
-#menu-horizontal-header li:hover {
-	cursor: pointer;
-	box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, .3);
-}
-
-#menu-horizontal-header i {
-	position: relative;
-	top: -13px !important;
-	padding: 10px;
-}
 
 .displayNone{
 	display: none;
@@ -102,47 +42,6 @@ a{
 .absolute{
 	position: absolute;
 }
-.subMenu {
-	position: absolute;
-	background-color: #fff;
-	border: solid 1px rgba(0, 0, 0, .1);
-	border-radius: 3px;
-	right: 5px;
-    padding: 0;
-    margin:0;
-    z-index: 3;
-}
-
-.subMenu:after {
-	position: absolute;
-	content: "";
-    width: 0;
-    height: 0;
-    border-left : 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-bottom: 15px solid #000;
-    border-bottom: 15px solid #999;
-    right: 27px;
-    top: -15px;
-}
-
-.subMenu li{
-	width: 170px !important;
-	position: relative;
-}
-
-.linkSubMenu{
-	display: block;
-	padding-left: 30px;
-	font-size: 15px;
-	margin-left: -10px;
-	font-family: 'Amiri', serif;
-}
-
-.linkSubMenu:hover{
-	background-color: #f4f4f4;
-}
-
 .container {
   	position: relative;
   	margin-right: auto;
@@ -176,11 +75,15 @@ a{
 	box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, .2);
 	cursor: pointer;
 }
+#toggle-button-left-menu:active{
+	box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, .3) inset;
+	cursor: pointer;
+}
 #menuLeft {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background-image: linear-gradient(145deg, #1D1F20, #404348);
+	background-image: linear-gradient(145deg, #0B8AD9, #00278C);
 	color: #fff;
 }
 
@@ -193,10 +96,10 @@ a{
 
 #panel {
 	position: absolute;
-	height: 100%;
+	height: 1000px;
 	width: 100%;
 	background-color: #F7F7F7;
-	box-shadow: -7px 0px 7px 0px rgba(0, 0, 0, .3);
+	box-shadow: -3px 0px 7px 0px rgba(0, 0, 0, .4);
 }
 
 #panelModal {
@@ -206,4 +109,43 @@ a{
 	height: 100%;
 	width: 100%;
 	z-index: 3;
+}
+#academics-main-content {}
+
+.academics-main-content-on {
+    -webkit-animation: .5s slide-on 1 reverse;
+    -moz-animation: .5s slide-on 1 reverse;
+    animation: .5s slide-on 1 reverse;
+    //margin-left: 257px;
+    left: 257px;
+}
+.academics-main-content-off {
+	-webkit-animation: .5s slide-off 1 reverse;
+    -moz-animation: .5s slide-off 1 reverse;
+    animation: .5s slide-off 1 reverse;
+    left: 0px;
+}
+
+@keyframes slide-on {
+    from {left:257px;}
+    to {left: 0px;}
+}@-webkit-keyframes slide-on {
+    from {left:257px;}
+    to {left: 0px;}
+}@-moz-keyframes slide-on {
+    from {left:257px;}
+    to {left: 0px;}
+}
+
+@keyframes slide-off {
+    from{left: 0px;}
+    to {left: 257px;}
+}
+@-webkit-keyframes slide-off {
+    from {left: 0px;}
+    to {left: 257px;}
+}
+@-moz-keyframes slide-off {
+    from {left:0px;}
+    to {left:2570px;}
 }

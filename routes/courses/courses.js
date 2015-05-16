@@ -17,12 +17,19 @@ router.get("/", function (req, res) {
 });
 
 router.get("/:idCourse", function (req, res) {
-	if (req.user != null) {
-		var idCourse = req.params.idCourse;
-		modelCourse.findById(idCourse, function (err, course) {
-			res.send(course);
-		});
-	}
+	var idCourse = req.params.idCourse;
+	modelCourse.findById(idCourse, function (err, course) {
+		if (req.user != null) {
+			res.render("academics_views/courses/specific_course", {
+				user : req.user,
+				course : course
+			});
+		} else {
+			res.render("academics_views/courses/external_user/specific_course", {
+				course : course
+			});
+		}
+	});
 });
 
 router.post("/createCourse/:courseName", function (req, res) {
