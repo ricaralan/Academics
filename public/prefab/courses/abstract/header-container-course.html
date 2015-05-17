@@ -1,0 +1,51 @@
+<style type="text/css">
+	.header-container-course {
+		background-color: #fff;
+		display: flex;
+		height: 150px;
+		width: 100%;
+		position: relative;
+		flex-direction: row;
+	}
+	.header-container-course .fa {
+		color: #fff;
+		-webkit-transition: .3s;
+	    transition: .3s;
+	    margin-top: 7px;
+	}
+	.header-container-course .fa:hover{
+		transform:scale(1.3);
+		-webkit-transform:scale(1.3);
+	}
+	.header-container-course:hover #barraLateral{
+		right: 0;
+	}
+	#barraLateral {
+		-webkit-transition: .3s;
+	    transition: .3s;
+		position: absolute;
+		width: 28px;
+		height: 100%;
+		right: -55px;
+		padding: 12px;
+		background-color: #0080D6;
+		text-align: center;
+	}
+</style>
+<div class="header-container-course">
+	<p id="barraLateral">
+		<a href="#">
+			<i class="fa fa-camera" title="Cambiar foto"></i>
+		</a>
+		<a href="/courses/{{curso.course_id}}" title="Ir a {{curso.course_name}}">
+			<i class="fa fa-hand-o-right" ></i>
+		</a>
+		<a href="#" title="Archivar {{curso.course_name}}">
+			<i class="fa fa-archive"></i>
+		</a>
+		<a href="#" title="Archivar {{curso.course_name}}">
+			<i class="fa fa-trash"></i>
+		</a>
+	</p>
+	<img src="/images/lapiz_y_cuaderno.jpg" width="100%">
+</div>

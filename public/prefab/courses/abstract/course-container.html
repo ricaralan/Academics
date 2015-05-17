@@ -1,0 +1,19 @@
+<style type="text/css">
+	.course-container {
+		width: 32%;
+		height: 200px;
+		border-radius: 3px;
+		border: solid 1px rgba(0, 0, 0, .1);
+		flex-direction: column;
+		display: inline-flex;
+		margin: 7px 7px 7px 0px;
+		overflow: hidden;
+		position: relative;
+	}
+	@media (max-width: 768px) {
+		.course-container {
+			width: 100%;
+		}
+	}
+</style>
+<div class="course-container" ng-transclude></div>

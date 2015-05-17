@@ -14,7 +14,7 @@ router.get("/", function (req, res) {
 			res.render("academics_views/courses/", {
 				title : "Academics - courses",
 				user : req.user,
-				courses : courses
+				courses : JSON.stringify(courses)
 			});
 		});
 	}
@@ -36,13 +36,13 @@ router.get("/:idCourse", function (req, res) {
 	});
 });
 
-router.post("/createCourse/:courseName", function (req, res) {
+router.post("/createCourse/:course_name", function (req, res) {
 	if (req.user != null) {
 		// Existe el usuario logueado... entonces se crea el curso
-		var courseName = req.params.courseName;
+		var course_name = req.params.course_name;
 		modelCourse.createNewCourse({
 			"user_id_course" : req.user.user_id,
-			"courseName" : courseName
+			"course_name" : course_name
 		}, function  (err, results) {
 			res.send(results);
 		});

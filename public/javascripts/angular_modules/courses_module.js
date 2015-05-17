@@ -19,6 +19,49 @@ app.controller("coursesController", function ($scope, $http) {
 	$scope.initConf();
 });
 
+app.directive("courseContainer", function () {
+	/*var initCourseContainer = function (scope, element, attributes) {
+		attributes.$observe("cursos", function (cursos) {
+			scope.cursos = JSON.parse(cursos);
+		});
+	};*/
+	return {
+		restrict : "E",
+		transclude : true,
+		templateUrl : "/prefab/courses/abstract/course-container.html"
+		//link : initCourseContainer
+	};
+});
+
+app.directive("headerContainerCourse", function () {
+	return {
+		restrict : "E",
+		templateUrl : "/prefab/courses/abstract/header-container-course.html"
+	};
+});
+
+app.directive("footerContainerCourse", function () {
+	return {
+		restrict : "E",
+		templateUrl : "/prefab/courses/abstract/footer-container-course.html"
+	};
+});
+
+app.directive("coursesContainer", function () {
+	var initCoursesContainer = function (scope, element, attributes) {
+		attributes.$observe("cursos", function (cursos) {
+			scope.cursos = JSON.parse(cursos);
+		});
+	};
+	return {
+		restrict : "E",
+		transclude : true,
+		templateUrl : "/prefab/courses/courses-container.html",
+		link : initCoursesContainer
+	};
+});
+
+/*
 app.directive("menu", function() {
 	var linkFunction = function(scope, element, attributes) {
 	    attributes.$observe("atributo", function (value) {
@@ -45,3 +88,4 @@ app.directive("topNavAcademics", function () {
 		link : linkFunction
 	};
 });
+*/
