@@ -9,6 +9,11 @@
 		margin: 7px 7px 7px 0px;
 		overflow: hidden;
 		position: relative;
+		background-color: #e3e3e3;
+	}
+	.course-container img{
+		position: absolute;
+
 	}
 	@media (max-width: 768px) {
 		.course-container {
@@ -16,4 +21,9 @@
 		}
 	}
 </style>
-<div class="course-container" ng-transclude></div>
+<div class="course-container">
+	<a href="/courses/{{course.course_id}}">
+		<img src="/images/lapiz_y_cuaderno.jpg" width="100%">
+	</a>
+	<div ng-transclude></div>
+</div>

@@ -4,7 +4,8 @@
 		width: 100%;
 		box-shadow: 0px -3px 7px 0px rgba(0, 0, 0, .4),
 		0px 0px 7px 0px rgba(0, 0, 0, .2) inset;
-		position: relative;
+		position: absolute;
+		bottom: 0;
 		background-color: #0080D6;
 	}
 	.footer-container-course a{
@@ -19,10 +20,7 @@
 	    transition: .3s;
 	    font-family: font-family: 'Lato', sans-serif;
 	}
-	.footer-container-course a:hover{
-		font-size: 23px;
-	}
 </style>
 <div class="footer-container-course">
-	<a href="/courses/{{curso.course_id}}">{{curso.course_name}}</a>
+	<a href="/courses/{{course.course_id}}">{{course.course_name}}</a>
 </div>

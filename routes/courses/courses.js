@@ -26,11 +26,11 @@ router.get("/:idCourse", function (req, res) {
 		if (req.user != null) {
 			res.render("academics_views/courses/specific_course", {
 				user : req.user,
-				course : course
+				course : JSON.stringify(course)
 			});
 		} else {
 			res.render("academics_views/courses/external_user/specific_course", {
-				course : course
+				course : JSON.stringify(course)
 			});
 		}
 	});

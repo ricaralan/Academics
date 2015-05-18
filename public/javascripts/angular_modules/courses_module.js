@@ -49,14 +49,26 @@ app.directive("footerContainerCourse", function () {
 
 app.directive("coursesContainer", function () {
 	var initCoursesContainer = function (scope, element, attributes) {
-		attributes.$observe("cursos", function (cursos) {
-			scope.cursos = JSON.parse(cursos);
+		attributes.$observe("courses", function (courses) {
+			scope.courses = JSON.parse(courses);
 		});
 	};
 	return {
 		restrict : "E",
 		transclude : true,
 		templateUrl : "/prefab/courses/courses-container.html",
+		link : initCoursesContainer
+	};
+});
+
+app.directive("containerSpecificCourse", function () {
+	var initCoursesContainer = function (scope, element, attributes) {
+		scope.course = JSON.parse(attributes.course);
+	};
+	return {
+		restrict : "E",
+		transclude : true,
+		templateUrl : "/prefab/courses/container-specific-course.html",
 		link : initCoursesContainer
 	};
 });
