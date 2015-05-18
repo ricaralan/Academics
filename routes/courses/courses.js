@@ -1,6 +1,7 @@
 var express = require("express");
 var router  = express.Router();
 var modelCourse = require("../../database/models/course");
+var PublicationCourseModel = require("../../database/models/PublicationCourseModel");
 
 router.get("/", function (req, res) {
 	if (req.user == null) {
@@ -43,6 +44,19 @@ router.post("/createCourse/:course_name", function (req, res) {
 		modelCourse.createNewCourse({
 			"user_id_course" : req.user.user_id,
 			"course_name" : course_name
+		}, function  (err, results) {
+			res.send(results);
+		});
+	}
+});
+
+router.post("/publishInCourse/:publication_text", function (req, res) {
+	if (req.user != null) {
+		// Existe el usuario logueado... entonces se puede publicar
+		var publication_text = req.params.publication_text;
+		PublicationCourseModel.publishInCourse({
+			"user_id_publish" : req.user.user_id,
+			"publication_text" : publication_text
 		}, function  (err, results) {
 			res.send(results);
 		});

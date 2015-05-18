@@ -4,7 +4,9 @@ app.controller("coursesController", function ($scope, $http) {
 
 	$scope.initConf = function () {
 		btnCreateCourse = document.getElementById("btnCreateCourse");
-		btnCreateCourse.addEventListener("click", $scope.createCourse);
+		if (btnCreateCourse != null){
+			btnCreateCourse.addEventListener("click", $scope.createCourse);
+		}
 	};
 
 	$scope.createCourse = function () {
@@ -12,6 +14,15 @@ app.controller("coursesController", function ($scope, $http) {
 		.success(function (results) {
 			if (results.inserted) {
 				window.location = "/courses/" + results.generated_keys[0];
+			}
+		});
+	};
+
+	$scope.publishInCourse = function () {
+		$http.post("/courses/publishInCourse/" + $scope.textPublishInCourse)
+		.success(function (results) {
+			if (results.inserted) {
+				console.log("Publicacion exitosa!");
 			}
 		});
 	};
@@ -73,31 +84,3 @@ app.directive("containerSpecificCourse", function () {
 	};
 });
 
-/*
-app.directive("menu", function() {
-	var linkFunction = function(scope, element, attributes) {
-	    attributes.$observe("atributo", function (value) {
-	    	scope.atributo = value*4;
-	    });
-	  };
-	return {
-		restrict : "E",
-		template: "<p>{{text}} {{atributo}}</p>",
-	    link: linkFunction
-	};
-});
-
-app.directive("topNavAcademics", function () {
-	var linkFunction = function(scope, element, attributes) {
-		attributes.$observe("name", function(name) {
-			scope.name = name;
-		});
-	};
-	return {
-		restrict : "E",
-		transclude: true,
-		templateUrl : "/prefab/top_nav.html",
-		link : linkFunction
-	};
-});
-*/
