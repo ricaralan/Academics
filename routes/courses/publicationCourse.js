@@ -8,6 +8,7 @@ router.get("/:course_id/:sliceStart/:sliceEnd", function (req, res) {
 	PublicationCourseModel.getCoursesSlice(
 		{course_id_publish : req.params.course_id}, parseInt(sliceStart), parseInt(sliceEnd),
 		function (err, publications){
+			console.log(publications);
 			res.send(publications);
 	});
 });

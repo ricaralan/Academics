@@ -18,9 +18,13 @@ PublicationCourseModel.prototype.setTableName = function(table) {
 PublicationCourseModel.prototype.getCoursesSlice = 
 	function (jsonFilter, sliceStart, sliceEnd, callback) {
 	db.connect(function (err, connection) {
-		db.getDataTableFilterSlice
+		/*db.getDataTableFilterSlice
 		(connection, PublicationCourseModel.prototype.tableName,
-			jsonFilter, sliceStart, sliceEnd, callback);
+			jsonFilter, sliceStart, sliceEnd, callback);*/
+		db.getR().table(PublicationCourseModel.prototype.tableName).filter(jsonFilter)
+			.eqJoin("user_id_publish",db.getR().table("user")).zip().run(connection, function (err, cursor) {
+			cursor.toArray(callback);
+		});
 	});
 };
 

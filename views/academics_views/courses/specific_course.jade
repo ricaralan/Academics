@@ -8,7 +8,8 @@ block content
                     textarea(ng-model="textPublishInCourse")
                     button(ng-click="publishInCourse()") publish
                     div(ng-repeat="publication in publications")
-                        {{publication.publication_text}}
+                        img(src="{{publication.user_photo}}")
+                        p {{publication.user_name}}: {{publication.publication_text}}
                 br
                 br
                 br
