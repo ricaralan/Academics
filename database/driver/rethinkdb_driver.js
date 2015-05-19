@@ -130,6 +130,14 @@ DB.prototype.getDataTableFilter = function (connection, table, jsonFilter, callb
 	});
 };
 
+DB.prototype.getDataTableFilterSlice = 
+    function (connection, table, jsonFilter, sliceStart, sliceEnd, callback) {
+	this.getR().table(table).filter(jsonFilter).slice(sliceStart, sliceEnd)
+	.run(connection, function(err, cursor){
+		cursor.toArray(callback);
+	});
+};
+
 /**
 *	Buscar por ID en una tabla especifica
 *	Ejemplo:

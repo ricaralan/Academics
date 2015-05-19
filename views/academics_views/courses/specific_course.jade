@@ -7,6 +7,8 @@ block content
                 div(ng-controller="coursesController")
                     textarea(ng-model="textPublishInCourse")
                     button(ng-click="publishInCourse()") publish
+                    div(ng-repeat="publication in publications")
+                        {{publication.publication_text}}
                 br
                 br
                 br

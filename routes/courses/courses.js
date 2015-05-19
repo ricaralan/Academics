@@ -50,17 +50,4 @@ router.post("/createCourse/:course_name", function (req, res) {
 	}
 });
 
-router.post("/publishInCourse/:publication_text", function (req, res) {
-	if (req.user != null) {
-		// Existe el usuario logueado... entonces se puede publicar
-		var publication_text = req.params.publication_text;
-		PublicationCourseModel.publishInCourse({
-			"user_id_publish" : req.user.user_id,
-			"publication_text" : publication_text
-		}, function  (err, results) {
-			res.send(results);
-		});
-	}
-});
-
 module.exports = router;

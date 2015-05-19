@@ -15,6 +15,15 @@ PublicationCourseModel.prototype.setTableName = function(table) {
 	PublicationCourseModel.prototype.tableName = table;
 };
 
+PublicationCourseModel.prototype.getCoursesSlice = 
+	function (jsonFilter, sliceStart, sliceEnd, callback) {
+	db.connect(function (err, connection) {
+		db.getDataTableFilterSlice
+		(connection, PublicationCourseModel.prototype.tableName,
+			jsonFilter, sliceStart, sliceEnd, callback);
+	});
+};
+
 PublicationCourseModel.prototype.publishInCourse =
 	function (jsonDataNewPublication, callback) {
 	db.connect(function (err, connection) {

@@ -2,6 +2,8 @@ var app = angular.module("courses_module", ["academics_module"]);
 
 app.controller("coursesController", function ($scope, $http) {
 
+	$scope.publications = [];
+
 	$scope.initConf = function () {
 		btnCreateCourse = document.getElementById("btnCreateCourse");
 		if (btnCreateCourse != null){
@@ -19,7 +21,9 @@ app.controller("coursesController", function ($scope, $http) {
 	};
 
 	$scope.publishInCourse = function () {
-		$http.post("/courses/publishInCourse/" + $scope.textPublishInCourse)
+		URL = "/publicationCourse/publish/" + $scope.course.course_id +
+			  "/" + encodeURIComponent($scope.textPublishInCourse);
+		$http.post(URL)
 		.success(function (results) {
 			if (results.inserted) {
 				console.log("Publicacion exitosa!");
@@ -27,20 +31,23 @@ app.controller("coursesController", function ($scope, $http) {
 		});
 	};
 
+	$scope.getPublications = function (sliceStart, sliceEnd) {
+		URL = "/publicationCourse/" + $scope.course.course_id +
+			  "/" + sliceStart + "/" + sliceEnd;
+		$http.get(URL).success(function (publications){
+			$scope.publications = publications;
+		});
+	};
+
 	$scope.initConf();
+	$scope.getPublications(0, 5);
 });
 
 app.directive("courseContainer", function () {
-	/*var initCourseContainer = function (scope, element, attributes) {
-		attributes.$observe("cursos", function (cursos) {
-			scope.cursos = JSON.parse(cursos);
-		});
-	};*/
 	return {
 		restrict : "E",
 		transclude : true,
 		templateUrl : "/prefab/courses/abstract/course-container.html"
-		//link : initCourseContainer
 	};
 });
 
