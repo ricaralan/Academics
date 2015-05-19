@@ -20,6 +20,11 @@ app.controller("coursesController", function ($scope, $http) {
 		});
 	};
 
+	$scope.initConf();
+});
+
+app.controller("publicationsCourses", function ($scope, $http) {
+	
 	$scope.publishInCourse = function () {
 		URL = "/publicationCourse/publish/" + $scope.course.course_id +
 			  "/" + encodeURIComponent($scope.textPublishInCourse);
@@ -38,9 +43,9 @@ app.controller("coursesController", function ($scope, $http) {
 			$scope.publications = publications;
 		});
 	};
-
-	$scope.initConf();
+	
 	$scope.getPublications(0, 5);
+
 });
 
 app.directive("courseContainer", function () {

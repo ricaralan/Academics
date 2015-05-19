@@ -4,7 +4,7 @@ block content
         app-for-users-academics(user-photo="#{user.user_photo}")
             div(class="container" style="background-color:#fff;border:solid 1px rgba(0, 0, 0, .1);margin-top:23px;padding:50px;")
                 container-specific-course(course="#{course}")
-                div(ng-controller="coursesController")
+                div(ng-controller="publicationsCourses")
                     textarea(ng-model="textPublishInCourse")
                     button(ng-click="publishInCourse()") publish
                     div(ng-repeat="publication in publications")
