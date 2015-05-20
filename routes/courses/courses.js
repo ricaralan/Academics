@@ -24,15 +24,28 @@ router.get("/", function (req, res) {
 router.get("/:idCourse", function (req, res) {
 	var idCourse = req.params.idCourse;
 	modelCourse.findById(idCourse, function (err, course) {
-		if (req.user != null) {
-			res.render("academics_views/courses/specific_course", {
-				user : req.user,
-				course : JSON.stringify(course)
-			});
+		if (course != null) {
+			if (req.user != null) {
+					res.render("academics_views/courses/specific_course", {
+						user : req.user,
+						course : JSON.stringify(course)
+					});
+			} else {
+				res.render("academics_views/courses/external_user/specific_course", {
+					course : JSON.stringify(course)
+				});
+			}
 		} else {
-			res.render("academics_views/courses/external_user/specific_course", {
-				course : JSON.stringify(course)
-			});
+			if (req.user != null) {
+					res.render("academics_views/courses/not_found_course", {
+						user : req.user,
+						course : JSON.stringify(course)
+					});
+			} else {
+				res.render("academics_views/courses/external_user/not_found_course", {
+					course : JSON.stringify(course)
+				});
+			}
 		}
 	});
 });
