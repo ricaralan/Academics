@@ -25,15 +25,20 @@ app.controller("coursesController", function ($scope, $http) {
 
 app.controller("publicationsCourses", function ($scope, $http) {
 	
+	$scope.socket = io();
+
 	$scope.publishInCourse = function () {
-		URL = "/publicationCourse/publish/" + $scope.course.course_id +
-			  "/" + encodeURIComponent($scope.textPublishInCourse);
-		$http.post(URL)
-		.success(function (results) {
-			if (results.inserted) {
-				console.log("Publicacion exitosa!");
-			}
-		});
+		if ($scope.textPublishInCourse != null){
+			URL = "/publicationCourse/publish/" + $scope.course.course_id +
+				  "/" + encodeURIComponent($scope.textPublishInCourse);
+			$http.post(URL)
+			.success(function (results) {
+				if (results.inserted) {
+					$scope.textPublishInCourse = "";
+					console.log("Publicacion exitosa!");
+				}
+			});
+		}
 	};
 
 	$scope.getPublications = function (sliceStart, sliceEnd) {
@@ -43,8 +48,14 @@ app.controller("publicationsCourses", function ($scope, $http) {
 			$scope.publications = publications;
 		});
 	};
-	
-	$scope.getPublications(0, 5);
+
+	$scope.getPublications(0, 9);
+	console.log("newPublicationIn"+$scope.course.course_id);
+	$scope.socket.on("newPublicationIn"+$scope.course.course_id, function (publication){
+		$scope.$apply(function () {
+			$scope.publications.unshift(publication);
+		});
+	});
 
 });
 
