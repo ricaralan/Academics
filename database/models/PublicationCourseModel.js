@@ -41,6 +41,7 @@ function mergeJson(jsonTemp, json){
 		jsonTemp[key] = json[key];
 	}
 }
+
 PublicationCourseModel.prototype.changes = function (callback) {
 	db.connect(function (err, connection) {
 		db.tableChanges(

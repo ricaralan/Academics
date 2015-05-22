@@ -9,8 +9,15 @@ block content
                     button(ng-click="publishInCourse()") publish
                     div(ng-repeat="publication in publications")
                         img(src="{{publication.user_photo}}")
-                        p {{publication.user_name}}: {{publication.publication_text}}
+                        p {{publication.user_name}}: {{publication.publication_text}} 
+                            div(ng-init="getCommentPublication(publication)")
+                                label comentarios:
+                                div(ng-repeat="comment in publication.comments")
+                                    img(src="")
+                                    {{comment.comment_text}}
+                            input(placeholder="Comentar", id="coment_pub_{{publication.publication_course_id}}", ng-init="comentarPublicacion(publication.publication_course_id)")
                         
+
     script(type="text/javascript", src="/socket.io/socket.io.js")
     script(type="text/javascript", src="/javascripts/angular_modules/academics_module.js")
     script(type="text/javascript", src="/javascripts/angular_modules/courses_module.js")

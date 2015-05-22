@@ -40,4 +40,10 @@ CourseModel.prototype.createNewCourse = function (jsonDataNewCourse, callback) {
 	});
 };
 
+CourseModel.prototype.deleteCourse = function (course_id, callback) {
+	db.connect(function (err, connection) {
+		db.delete(connection, CourseModel.prototype.tableName, course_id, callback);
+	})
+}
+
 module.exports = new CourseModel();

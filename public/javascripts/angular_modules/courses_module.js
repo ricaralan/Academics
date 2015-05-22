@@ -2,12 +2,15 @@ var app = angular.module("courses_module", ["academics_module"]);
 
 app.controller("coursesController", function ($scope, $http) {
 
-	$scope.publications = [];
+	$scope.courses = [];
 
-	$scope.initConf = function () {
+	$scope.initBtnCreateCourse = function () {
 		btnCreateCourse = document.getElementById("btnCreateCourse");
 		if (btnCreateCourse != null){
-			btnCreateCourse.addEventListener("click", $scope.createCourse);
+			btnCreateCourse.addEventListener("click", function() {
+				btnCreateCourse.disabled = true;
+				$scope.createCourse();
+			});
 		}
 	};
 
@@ -20,12 +23,44 @@ app.controller("coursesController", function ($scope, $http) {
 		});
 	};
 
-	$scope.initConf();
+	$scope.getCoursesUser = function () {
+		$http.get("/courses/get/coursesUser").success(function (courses) {
+			$scope.courses = courses;
+		});
+	};
+
+	$scope.deleteCourse = function (course_id) {
+		var dataCourse = $scope.getCourseById(course_id);
+		if (confirm("Are you sure delete course \"" + dataCourse.course.course_name + "\"")) {
+			$http.delete("/courses/deleteCourse/"+ course_id)
+			.success(function (data){
+				if (data) {
+					$scope.courses.splice(dataCourse.position, 1);
+				} else {
+					alert("An error ocurred...");
+				}
+			});
+		}
+	};
+
+	$scope.getCourseById = function (course_id) {
+		for (var i = 0; i < $scope.courses.length; i++) {
+			if ($scope.courses[i].course_id == course_id) {
+				return {
+					position : i,
+					course : $scope.courses[i]
+				};
+			}
+		}
+		return null;
+	};
+
 });
 
 app.controller("publicationsCourses", function ($scope, $http) {
 	
 	$scope.socket = io();
+	$scope.publications = [];
 
 	$scope.publishInCourse = function () {
 		if ($scope.textPublishInCourse != null){
@@ -48,6 +83,33 @@ app.controller("publicationsCourses", function ($scope, $http) {
 			$scope.publications = publications;
 		});
 	};
+
+	$scope.getCommentPublication = function (publication) {
+		$http.get("/CommentPublication/"+publication.publication_course_id)
+		.success(function (data) {
+			publication.comments = data;
+		});
+	}
+
+	$scope.comentarPublicacion = function (publication_id) {
+		setTimeout(function () {
+			inputPublication = document.getElementById("coment_pub_" + publication_id);
+			inputPublication.addEventListener("keyup", function (e){
+				if (e.keyCode == 13) {
+					console.log(inputPublication.value);
+					$http.post("/commentPublication/"+encodeURIComponent(publication_id)+
+						"/"+encodeURIComponent(inputPublication.value))
+						.success(function (data) {
+							console.log(data);
+						});
+				}
+			});
+		}, 100);
+	};
+
+	/**
+	*	Init load
+	*/
 
 	$scope.getPublications(0, 9);
 	console.log("newPublicationIn"+$scope.course.course_id);
@@ -84,7 +146,7 @@ app.directive("footerContainerCourse", function () {
 app.directive("coursesContainer", function () {
 	var initCoursesContainer = function (scope, element, attributes) {
 		attributes.$observe("courses", function (courses) {
-			scope.courses = JSON.parse(courses);
+			//scope.courses = JSON.parse(courses);
 		});
 	};
 	return {

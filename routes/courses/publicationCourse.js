@@ -1,5 +1,6 @@
 var express = require("express");
 var router  = express.Router();
+var CommentPublicationModel = require("../../database/models/CommentPublicationModel");
 var PublicationCourseModel = require("../../database/models/PublicationCourseModel");
 
 router.get("/:course_id/:sliceStart/:sliceEnd", function (req, res) {
@@ -7,7 +8,7 @@ router.get("/:course_id/:sliceStart/:sliceEnd", function (req, res) {
 	var sliceEnd   = req.params.sliceEnd;
 	PublicationCourseModel.getCoursesSlice(
 		{course_id_publish : req.params.course_id}, parseInt(sliceStart), parseInt(sliceEnd),
-		function (err, publications){
+		function (err, publications) {
 			res.send(publications);
 	});
 });

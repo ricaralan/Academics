@@ -20,6 +20,7 @@ var DB = function  () {
 	    	{descripcion : require("./../academics_tables/academics_course")},
 	    	{descripcion : require("./../academics_tables/academics_group")},
 	    	{descripcion : require("./../academics_tables/academics_publication_course")},
+	    	{descripcion : require("./../academics_tables/academics_comment_publication")},
 	    	{descripcion : require("./../academics_tables/academics_note")}
 		]
 	};

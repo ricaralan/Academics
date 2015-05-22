@@ -14,6 +14,7 @@ var login   = require('./routes/login/login');
 var group = require('./routes/group/group');
 var courses = require('./routes/courses/courses');
 var publicationCourse = require('./routes/courses/publicationCourse');
+var commentPublication = require('./routes/courses/CommentPublication');
 
 var app = express();
 
@@ -56,6 +57,8 @@ app.get("/auth/facebook/callback", passport.authenticate("facebook", {
 app.use("/groups", group);
 app.use("/courses", courses);
 app.use("/publicationCourse", publicationCourse);
+app.use("/commentPublication", commentPublication);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
