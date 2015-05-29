@@ -96,12 +96,14 @@ app.controller("publicationsCourses", function ($scope, $http) {
 			inputPublication = document.getElementById("coment_pub_" + publication_id);
 			inputPublication.addEventListener("keyup", function (e){
 				if (e.keyCode == 13) {
-					console.log(inputPublication.value);
 					$http.post("/commentPublication/"+encodeURIComponent(publication_id)+
-						"/"+encodeURIComponent(inputPublication.value))
+						"/"+encodeURIComponent(this.value))
 						.success(function (data) {
-							console.log(data);
+							if (data.inserted == 1) {
+								console.log("Comentario exitoso!");
+							}
 						});
+					// TODO hacer que el input borre su contenido
 				}
 			});
 		}, 100);
