@@ -3,17 +3,17 @@ var path     = require('path');
 var favicon  = require('serve-favicon');
 var logger   = require('morgan');
 var cookieParser = require('cookie-parser');
-var session  = require("express-session");
+var session    = require("express-session");
 var bodyParser = require('body-parser');
-var passport = require("passport");
+var passport   = require("passport");
 require("./routes/passport/passport")(passport);
 
 var routes  = require('./routes/index');
 var users   = require('./routes/users');
 var login   = require('./routes/login/login');
-var group = require('./routes/group/group');
+var group   = require('./routes/group/group');
 var courses = require('./routes/courses/courses');
-var publicationCourse = require('./routes/courses/publicationCourse');
+var publicationCourse  = require('./routes/courses/publicationCourse');
 var commentPublication = require('./routes/courses/CommentPublication');
 
 var app = express();
@@ -59,6 +59,8 @@ app.use("/courses", courses);
 app.use("/publicationCourse", publicationCourse);
 app.use("/commentPublication", commentPublication);
 
+// TEST ROUTES
+app.use("/test", require("./routes/test"));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
