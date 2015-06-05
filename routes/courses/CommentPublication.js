@@ -3,7 +3,6 @@ var router  = express.Router();
 var CommentPublicationModel = require("../../database/models/CommentPublicationModel");
 
 router.get("/:publication_id", function (req, res) {
-	console.log("comments");
 	CommentPublicationModel.get(req.params.publication_id,
 		function(err, comments){
 			res.send(comments);

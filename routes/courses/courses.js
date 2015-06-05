@@ -11,15 +11,6 @@ router.get("/", function (req, res) {
 		});
 	} else {
 		// Hay un usuario logueado
-		/*
-		modelCourse.getUserCourses(req.user.user_id, function (err, courses) {
-			res.render("academics_views/courses/", {
-				title : "Academics - courses",
-				user : req.user,
-				courses : JSON.stringify(courses)
-			});
-		});
-		*/
 		res.render("academics_views/courses/", {
 			title : "Academics - courses",
 			user : req.user

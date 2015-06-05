@@ -51,6 +51,30 @@ function mergeJson(jsonTemp, json){
 	}
 }
 
+CommentPublicationModel.prototype.getDataSpecificComment =
+	function (idPublication, idComment, callback) {
+	
+	db.connect(function (err, connection) {
+		db.getR().table(CommentPublicationModel.prototype.tableName)
+			.filter({
+				publication_id_comment : idPublication,
+				comment_publication_id : idComment
+			}).eqJoin("publication_id_comment",
+			db.getR().table("publication_course"))
+			.run(connection, function (err, cursor) {
+				if (err){
+					console.log(err);
+				}
+			cursor.toArray(function (err, comment){
+				var json = [];
+				for (var i = 0; i < comment.length; i++) {
+					json [i] = getJoinJsons(comment[i].left, comment[i].right);
+				}
+				callback(err, json);
+			});
+		});
+	});
+};
 
 CommentPublicationModel.prototype.commentInPublish =
 	function (jsonDataNewCommentPublication, callback) {
@@ -59,6 +83,15 @@ CommentPublicationModel.prototype.commentInPublish =
 			connection,
 			CommentPublicationModel.prototype.tableName,
 			jsonDataNewCommentPublication,
+			callback);
+	});
+};
+
+CommentPublicationModel.prototype.changes = function (callback) {
+	db.connect(function (err, connection) {
+		db.tableChanges(
+			connection,
+			CommentPublicationModel.prototype.tableName,
 			callback);
 	});
 };

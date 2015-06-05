@@ -93,7 +93,7 @@ app.controller("publicationsCourses", function ($scope, $http) {
 
 	$scope.comentarPublicacion = function (publication_id) {
 		setTimeout(function () {
-			inputPublication = document.getElementById("coment_pub_" + publication_id);
+			inputPublication = document.getElementById("comment_pub_" + publication_id);
 			inputPublication.addEventListener("keyup", function (e){
 				if (e.keyCode == 13) {
 					$http.post("/commentPublication/"+encodeURIComponent(publication_id)+
@@ -113,13 +113,31 @@ app.controller("publicationsCourses", function ($scope, $http) {
 	*	Init load
 	*/
 
+	// TODO ADD OPTION GET MORE PUBLICATIONS!!
 	$scope.getPublications(0, 9);
-	console.log("newPublicationIn"+$scope.course.course_id);
 	$scope.socket.on("newPublicationIn"+$scope.course.course_id, function (publication){
 		$scope.$apply(function () {
 			$scope.publications.unshift(publication);
 		});
 	});
+
+	$scope.initSocketPublicationForComments = function (publicationId) {
+		$scope.socket.on("newCommentInPublication-"+publicationId, function(comment){
+			$scope.addCommentToPublication(publicationId, comment);
+			content = document.getElementById("contentComments-"+publicationId);
+			content.innerHTML = content.innerHTML +"<br>"+ comment[0].comment_text;
+		});
+	};
+
+	$scope.addCommentToPublication = function (publicationId, comment) {
+		for (var i = 0; i < $scope.publications.length; i++){
+			if ($scope.publications[i].publication_course_id == publicationId) {
+				$scope.$apply(function () {
+					$scope.publications[i].comments.push(comment);
+				});
+			}
+		}
+	};
 
 });
 
