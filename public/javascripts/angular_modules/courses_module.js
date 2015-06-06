@@ -95,12 +95,14 @@ app.controller("publicationsCourses", function ($scope, $http) {
 		setTimeout(function () {
 			inputPublication = document.getElementById("comment_pub_" + publication_id);
 			inputPublication.addEventListener("keyup", function (e){
+				input = this;
 				if (e.keyCode == 13) {
 					$http.post("/commentPublication/"+encodeURIComponent(publication_id)+
 						"/"+encodeURIComponent(this.value))
 						.success(function (data) {
 							if (data.inserted == 1) {
 								console.log("Comentario exitoso!");
+								input.value = "";
 							}
 						});
 					// TODO hacer que el input borre su contenido
