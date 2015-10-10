@@ -4,12 +4,12 @@ module.exports = function (server) {
 	*	Init variables
 	*/
 	var io = require("socket.io")(server);
-	var PublicationCourseModel = require("../database/models/PublicationCourseModel");
-	var CommentPublicationModel = require("../database/models/CommentPublicationModel");
+	var PublicationCourseModel = null;//require("../database/models/PublicationCourseModel");
+	var CommentPublicationModel = null;//require("../database/models/CommentPublicationModel");
 
 	/**
 	*	Sockets
-	*/
+	
 	PublicationCourseModel.changes(function (err, cursor){
 	  cursor.each(function (err, publication){
 	    if (publication.new_val != null) {
@@ -43,7 +43,7 @@ module.exports = function (server) {
 						},
 					  	old_val: null 
 					}
-				*/
+				
 				CommentPublicationModel.getDataSpecificComment(
 						comment.new_val.publication_id_comment,
 						comment.new_val.comment_publication_id,
@@ -57,5 +57,5 @@ module.exports = function (server) {
 			}
 		});
 	});
-	
+	*/
 };

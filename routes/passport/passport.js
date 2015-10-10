@@ -11,6 +11,7 @@ var FacebookStrategy	= require("passport-facebook").Strategy;
 var configPassport = require("./configPassport");
 
 function authenticationPassport (accessToken, refreshToken, profile, done) {
+	console.log(userModel.getById);
 		userModel.getById(profile.id, function(err, user) {
 			if (err) {
 				console.log("ERROR rethinkdb getUserById: " + err.message);

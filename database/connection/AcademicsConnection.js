@@ -1,5 +1,6 @@
 /**
 *	AcademicsConnection
+*
 *	@author Alan Olivares
 *	@version 0.0.1
 */

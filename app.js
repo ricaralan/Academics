@@ -11,10 +11,10 @@ require("./routes/passport/passport")(passport);
 var routes  = require('./routes/index');
 var users   = require('./routes/users');
 var login   = require('./routes/login/login');
-var group   = require('./routes/group/group');
-var courses = require('./routes/courses/courses');
-var publicationCourse  = require('./routes/courses/publicationCourse');
-var commentPublication = require('./routes/courses/CommentPublication');
+// var group   = require('./routes/group/group');
+// var courses = require('./routes/courses/courses');
+// var publicationCourse  = require('./routes/courses/publicationCourse');
+// var commentPublication = require('./routes/courses/CommentPublication');
 
 var app = express();
 
@@ -54,10 +54,10 @@ app.get("/auth/facebook/callback", passport.authenticate("facebook", {
   failureRedirect : "/"
 }));
 
-app.use("/groups", group);
-app.use("/courses", courses);
-app.use("/publicationCourse", publicationCourse);
-app.use("/commentPublication", commentPublication);
+//app.use("/groups", group);
+//app.use("/courses", courses);
+//app.use("/publicationCourse", publicationCourse);
+//app.use("/commentPublication", commentPublication);
 
 // TEST ROUTES
 app.use("/test", require("./routes/test"));

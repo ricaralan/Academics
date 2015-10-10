@@ -4,13 +4,12 @@ var InitDatabase = function() {
   */
   var academicsConnection = require("./../connection/AcademicsConnection"),
       self = this;
-      self.dbName = "testDB",
+      self.dbName = "academics_db",
       self.tables = require("./tables");
 
   self.createDB = function(done) {
     academicsConnection.doQuery(
-      academicsConnection.getR().dbCreate(self.dbName),
-      function() {
+      academicsConnection.getR().dbCreate(self.dbName), function() {
         self.createTables(done);
       }
     );

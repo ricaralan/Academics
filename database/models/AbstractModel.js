@@ -5,12 +5,12 @@
 * @version 0.0.1
 * @description This class was meant to be the super class of the models
 */
-module.exports = function() {
+var AbstractModel = function() {
 
 	/**
 	*	@var getDateConnection is a object that will help us connect with the database
 	**/
-	this.getDateConnection = require("./../connection/GetDateConnection");
+	this.getDateConnection = require("./../connection/AcademicsConnection");
 
 	/**
 	*	@var table from database to override on child classes
@@ -77,3 +77,5 @@ module.exports = function() {
 	};
 
 };
+
+module.exports = new AbstractModel();
