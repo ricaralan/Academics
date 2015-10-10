@@ -1,5 +1,6 @@
 /**
 * AbstractModel
+*
 * @author Alan Olivares
 * @version 0.0.1
 * @description This class was meant to be the super class of the models
