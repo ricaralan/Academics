@@ -2,7 +2,7 @@
 *	@version 0.0.0
 *	@author Team Academics
 */
-var userModel = require("./../../database/models/user");
+var userModel = require("./../../database/models/UserModel");
 
 var TwitterStrategy		= require("passport-twitter").Strategy;
 var FacebookStrategy	= require("passport-facebook").Strategy;
@@ -11,24 +11,21 @@ var FacebookStrategy	= require("passport-facebook").Strategy;
 var configPassport = require("./configPassport");
 
 function authenticationPassport (accessToken, refreshToken, profile, done) {
-		userModel.findById(profile.id, function(err, user) {
+		userModel.getById(profile.id, function(err, user) {
 			if (err) {
 				console.log("ERROR rethinkdb getUserById: " + err.message);
 			} else if (user != null) {
 				// Si existe entonces se regresa la info del usuario
-				return done(null, user);
+				done(null, user);
 			} else {
 				// Se tiene que crear el usuario
-				console.log(
-					JSON.stringify(profile)
-					);
-				userModel.createNewUser({
+				userModel.insert({
 					user_id : profile.id,
 					user_name  : profile.displayName,
 					user_photo : profile.photos[0].value
 				}, function (err, results) {
 					if (results.inserted == 1){
-						userModel.findById(profile.id, function(err, user) {
+						userModel.getById(profile.id, function(err, user) {
 							if (err){
 								console.log("ERROR: rethinkdb: " + err.message);
 							}else{

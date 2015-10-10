@@ -15,6 +15,7 @@ var UserController = function() {
 
 };
 
+// UserController extends of AbstractController
 UserController.prototype = require("./AbstractController");
 
 module.exports = new UserController();
