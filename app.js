@@ -7,11 +7,6 @@ var session    = require("express-session");
 var bodyParser = require('body-parser');
 var passport   = require("passport");
 require("./routes/passport/passport")(passport);
-/*
-var routes  = require('./routes/index');
-var users   = require('./routes/users');
-var login   = require('./routes/login/login');
-*/
 
 var app = express();
 
@@ -61,14 +56,6 @@ app.post("/auth/local/", passport.authenticate("local"), function(req, res) {
     }
     res.send({success : loginSuccess});
   });
-
-//app.use("/groups", group);
-//app.use("/courses", courses);
-//app.use("/publicationCourse", publicationCourse);
-//app.use("/commentPublication", commentPublication);
-
-// TEST ROUTES
-app.use("/test", require("./routes/test"));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
