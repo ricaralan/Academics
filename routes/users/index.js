@@ -17,16 +17,15 @@ router.post("/create", function(req, res) {
 		    user_confirm_email  : false,
 		    user_login_type : "local",
 		    user_email : req.body.user.email,
-		    user_password : req.body.user.password1
+		    user_password : req.body.user.password1,
+		    user_photo : "/images/system/users/default-avatar.png"
 	  	}, function(err, data) {
 	  		if(!err && data.inserted === 1) {
 	  			// Set credentials logIn
 	  			req.body.username = req.body.user.email;
 	        	req.body.password = req.body.user.password1;
 	        	// Send email confirmation account
-	        	mailer.sendConfirmEmail(req.body.user.email, data.generated_keys[0], function(err, data){
-	        		console.log(err, data);
-	        	});
+	        	mailer.sendConfirmEmail(req.body.user.email, data.generated_keys[0], function(err, data) { });
 				userController.getById(data.generated_keys[0], function(err, user) {
 		          passport.authenticate('local', function(err, user, info) {
 		          	// Set variable session

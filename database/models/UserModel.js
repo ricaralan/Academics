@@ -10,8 +10,8 @@ var UserModel = function() {
 	self.table = "academics_user";
 
 	self.getUserIfExist = function(email, password, done) {
-		self.getDateConnection.doQuery(
-			self.getDateConnection.getR()
+		self.academicsConnection.doQuery(
+			self.academicsConnection.getR()
 			.table(self.table)
 			.filter({
 				user_email : email,
@@ -29,8 +29,8 @@ var UserModel = function() {
 	};
 
 	self.getByEmail = function(email, done) {
-		self.getDateConnection.doQuery(
-			self.getDateConnection.getR().table(self.table)
+		self.academicsConnection.doQuery(
+			self.academicsConnection.getR().table(self.table)
 			.filter({user_email : email})
 			, function(err, cursor) {
 				try {
@@ -39,6 +39,13 @@ var UserModel = function() {
 					done(e);
 				}
 		}, done);
+	};
+
+	self.confirmEmail = function(userId, done) {
+		self.academicsConnection.doQuery(
+			self.academicsConnection.getR().table(self.table).get(userId).update({
+				user_confirm_email : true
+			}), done);
 	};
 
 }

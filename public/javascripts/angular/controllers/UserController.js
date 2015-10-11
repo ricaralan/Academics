@@ -4,9 +4,8 @@ AcademicsModule.controller("UserController", ["$scope", "$http", function($scope
 
 	$scope.createUser = function() {
 		$http.post("/users/create", {user : $scope.formUser}).success(function(data) {
-			console.log(data);
 			if(data.success) {
-				//window.location = !data.emailComprobado?"/confirm_email":"/";
+				window.location = !data.emailComprobado?"/confirm_email":"/";
 			} else if(data.userExist) {
 				Materialize.toast("Email is occupied by someone else");
 			} else {

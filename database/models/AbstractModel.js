@@ -8,9 +8,9 @@
 var AbstractModel = function() {
 
 	/**
-	*	@var getDateConnection is a object that will help us connect with the database
+	*	@var academicsConnection is a object that will help us connect with the database
 	**/
-	this.getDateConnection = require("./../connection/AcademicsConnection");
+	this.academicsConnection = require("./../connection/AcademicsConnection");
 
 	/**
 	*	@var table from database to override on child classes
@@ -24,8 +24,8 @@ var AbstractModel = function() {
 	*	@param done is a callback
 	**/
 	this.getById = function(id, done) {
-		this.getDateConnection.doQuery(
-			this.getDateConnection.getR().table(this.table).get(id), done);
+		this.academicsConnection.doQuery(
+			this.academicsConnection.getR().table(this.table).get(id), done);
 	};
 
 	/**
@@ -35,8 +35,8 @@ var AbstractModel = function() {
 	*	@param done is a callback
 	**/
 	this.insert = function(json, done) {
-		this.getDateConnection.doQuery(
-			this.getDateConnection.getR().table(this.table).insert(json)
+		this.academicsConnection.doQuery(
+			this.academicsConnection.getR().table(this.table).insert(json)
 			, done);
 	};
 
@@ -48,8 +48,8 @@ var AbstractModel = function() {
 	*	@param is a callback
 	**/
 	this.update = function(id, json, done) {
-		this.getDateConnection.doQuery(
-			this.getDateConnection.getR().table(this.table).get(id).update(json)
+		this.academicsConnection.doQuery(
+			this.academicsConnection.getR().table(this.table).get(id).update(json)
 			, done);
 	};
 
@@ -60,8 +60,8 @@ var AbstractModel = function() {
 	*	@param is a callback
 	**/
 	this.delete = function(id, done) {
-		this.getDateConnection.doQuery(
-			this.getDateConnection.getR().table(this.table).get(id).delete()
+		this.academicsConnection.doQuery(
+			this.academicsConnection.getR().table(this.table).get(id).delete()
 			, done);
 	};
 
@@ -71,8 +71,8 @@ var AbstractModel = function() {
 	*	@param done is a callback
 	**/
 	this.changes = function(done) {
-		this.getDateConnection.doQuery(
-			this.getDateConnection.getR().table(this.table).changes()
+		this.academicsConnection.doQuery(
+			this.academicsConnection.getR().table(this.table).changes()
 			, done);
 	};
 

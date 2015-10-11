@@ -1,0 +1,8 @@
+extends ../../layout
+
+block content
+    div(ng-app="AcademicsModule")
+        app-for-users(user-photo="#{user.user_photo}")
+            h3(class="center")
+               i(class="large material-icons icon-success") done
+               p(style="display:inline;")=message

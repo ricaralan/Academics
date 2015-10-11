@@ -1,0 +1,9 @@
+extends ../../layout
+
+block content
+    div(ng-app="AcademicsModule")
+        app-for-users(user-photo="#{user.user_photo}")
+            .container.content
+                h3(class="center")
+                    i(class="large material-icons icon-error") error
+                    p(style="display:inline;")=message

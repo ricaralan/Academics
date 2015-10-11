@@ -17,6 +17,10 @@ var UserController = function() {
 		self.model.getByEmail(email, done);
 	};
 
+	self.confirmEmail = function(userId, done) {
+		self.model.confirmEmail(userId, done);
+	};
+
 	self.insert = function(json, done) {
 		if(json.user_password) {
 			json.user_password = encriptation.cipher(json.user_password);
