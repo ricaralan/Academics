@@ -54,6 +54,16 @@ app.get("/auth/facebook/callback", passport.authenticate("facebook", {
   failureRedirect : "/"
 }));
 
+app.get('/auth/local', passport.authenticate('local'));
+app.post("/auth/local/", passport.authenticate("local"), function(req, res) {
+    loginSuccess = true;
+    if(req.user.errLogin) {
+      loginSuccess = false;
+      req.logout();
+    }
+    res.send({success : loginSuccess});
+  });
+
 //app.use("/groups", group);
 //app.use("/courses", courses);
 //app.use("/publicationCourse", publicationCourse);

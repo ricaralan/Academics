@@ -4,14 +4,14 @@
 */
 var userModel = require("./../../database/models/UserModel");
 
-var TwitterStrategy		= require("passport-twitter").Strategy;
-var FacebookStrategy	= require("passport-facebook").Strategy;
+var TwitterStrategy	 = require("passport-twitter").Strategy;
+var FacebookStrategy = require("passport-facebook").Strategy;
+var LocalStrategy	 = require("passport-local").Strategy;
 
 // Este modulo contiene la configuración de API keys para Academics
 var configPassport = require("./configPassport");
 
 function authenticationPassport (accessToken, refreshToken, profile, done) {
-	console.log(userModel.getById);
 		userModel.getById(profile.id, function(err, user) {
 			if (err) {
 				console.log("ERROR rethinkdb getUserById: " + err.message);
@@ -64,6 +64,13 @@ module.exports = function (passport) {
 		callbackURL   : configPassport.facebook.callbackURL,
 		profileFields : ["id", "displayName", "photos"]
 	}, authenticationPassport));
+
+	// Configuración de autenticación local
+	passport.use(new LocalStrategy(function(username, password, done) {
+	  userController.getUserIfExist(username, password, function(err, user) {
+			done(null, (user!=null) ? user : {errLogin : true});
+	  });
+	}));
 
 };
 
