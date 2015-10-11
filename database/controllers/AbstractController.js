@@ -4,42 +4,42 @@
 * @author Alan Olivares
 * @version 0.0.1
 **/
-module.exports = function() {
+var AbstractController = function() {
 
 	var self = this;
 
-	self.model = null;
+	this.model = null;
 
-	self.getById = function(id, done) {
+	this.getById = function(id, done) {
 		try {
-			self.model.getById(id, done);
+			this.model.getById(id, done);
 		} catch(e) {
 			console.log(e);
 			throw new Error("ERROR: ABSTRACT MODEL REQUIRES A MODEL ", e);
 		}
 	};
 
-	self.insert = function(jsonData, done) {
+	this.insert = function(jsonData, done) {
 		try {
-			self.model.insert(jsonData, done);
+			this.model.insert(jsonData, done);
 		} catch(e) {
 			console.log(e);
 			throw new Error("ERROR: ABSTRACT MODEL REQUIRES A MODEL ", e);
 		}
 	};
 	
-	self.update = function(id, json, done) {
+	this.update = function(id, json, done) {
 		try {
-			self.model.update(id, json, done);
+			this.model.update(id, json, done);
 		} catch(e) {
 			console.log(e);
 			throw new Error("ERROR: ABSTRACT MODEL REQUIRES A MODEL ", e);
 		}
 	};
 	
-	self.delete = function(id, done) {
+	this.delete = function(id, done) {
 		try {
-			self.model.delete(id, done);
+			this.model.delete(id, done);
 		} catch(e) {
 			console.log(e);
 			throw new Error("ERROR: ABSTRACT MODEL REQUIRES A MODEL ", e);
@@ -47,3 +47,5 @@ module.exports = function() {
 	};
 
 };
+
+module.exports = new AbstractController();

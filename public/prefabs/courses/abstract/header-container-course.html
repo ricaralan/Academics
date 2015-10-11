@@ -1,0 +1,26 @@
+<style type="text/css">
+	#barraLateral {
+		-webkit-transition: .3s;
+	    transition: .3s;
+		position: absolute;
+		width: 28px;
+		height: 100%;
+		right: -55px;
+		padding: 12px;
+		background-color: #0080D6;
+		text-align: center;
+	}
+</style>
+<div class="header-container-course">
+	<p id="barraLateral">
+		<a href="#">
+			<i class="fa fa-camera" title="Cambiar foto"></i>
+		</a>
+		<a href="#" title="Archivar {{course.course_name}}">
+			<i class="fa fa-archive"></i>
+		</a>
+		<a href="#" ng-click="deleteCourse(course.course_id)" title="Archivar {{course.course_name}}">
+			<i class="fa fa-trash"></i>
+		</a>
+	</p>
+</div>

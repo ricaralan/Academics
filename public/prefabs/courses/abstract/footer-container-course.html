@@ -1,0 +1,26 @@
+<style type="text/css">
+	.footer-container-course {
+		height: 60px;
+		width: 100%;
+		box-shadow: 0px -3px 7px 0px rgba(0, 0, 0, .4),
+		0px 0px 7px 0px rgba(0, 0, 0, .2) inset;
+		position: absolute;
+		bottom: 0px;
+		background-color: #0080D6;
+	}
+	.footer-container-course a{
+		color: #fff;
+		position: absolute;
+		text-align: center;
+		width: 100%;
+		height: 100%;
+		font-size: 19px;
+		padding-top: 10px;
+		-webkit-transition: .3s;
+	    transition: .3s;
+	    font-family: font-family: 'Lato', sans-serif;
+	}
+</style>
+<div class="footer-container-course">
+	<a href="/courses/{{course.course_id}}">{{course.course_name}}</a>
+</div>

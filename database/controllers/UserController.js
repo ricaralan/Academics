@@ -6,7 +6,6 @@
 var UserController = function() {
 
 	var self = this;
-
 	self.model = require("./../models/UserModel");
 
 	self.getUserIfExist = function(email, password, done) {

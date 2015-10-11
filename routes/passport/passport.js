@@ -23,7 +23,8 @@ function authenticationPassport (accessToken, refreshToken, profile, done) {
 				userModel.insert({
 					user_id : profile.id,
 					user_name  : profile.displayName,
-					user_photo : profile.photos[0].value
+					user_photo : profile.photos[0].value,
+					user_login_type : profile.provider
 				}, function (err, results) {
 					if (results.inserted == 1){
 						userModel.getById(profile.id, function(err, user) {

@@ -7,14 +7,11 @@ var session    = require("express-session");
 var bodyParser = require('body-parser');
 var passport   = require("passport");
 require("./routes/passport/passport")(passport);
-
+/*
 var routes  = require('./routes/index');
 var users   = require('./routes/users');
 var login   = require('./routes/login/login');
-// var group   = require('./routes/group/group');
-// var courses = require('./routes/courses/courses');
-// var publicationCourse  = require('./routes/courses/publicationCourse');
-// var commentPublication = require('./routes/courses/CommentPublication');
+*/
 
 var app = express();
 
@@ -38,7 +35,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.use('/', login);
+app.use('/', require('./routes/login/login'));
+app.use('/users', require('./routes/users'));
 
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/facebook',

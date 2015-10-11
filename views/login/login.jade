@@ -12,3 +12,35 @@ block content
   br
   br
   a(href="/test/setDummySession") Init dummy session (offline)
+  br
+  br
+  br
+  br
+  div(ng-app="AcademicsModule")
+    div(ng-controller="LoginController")
+    
+
+    div(ng-controller="UserController")
+      form(ng-submit="createUser()")
+                      div(class="input-field col s12")
+                        i(class="material-icons prefix") picture_in_picture
+                        input(type="text", ng-model="formUser.firstName", placeholder="First name", required)
+                      div(class="input-field col s12")
+                        i(class="material-icons prefix") picture_in_picture
+                        input(type="text", ng-model="formUser.lastName", placeholder="Last name", required)
+                      div(class="input-field col s12")
+                        i(class="material-icons prefix") email
+                        input(type="email", ng-model="formUser.email", placeholder="Email", required, class="validate")
+                      div(class="input-field col s12")
+                        i(class="material-icons prefix") vpn_key
+                        input(type="password",ng-model="formUser.password1", placeholder="password", required)
+                      div(class="input-field col s12")
+                        i(class="material-icons prefix") lock
+                        input(type="password",pattern="{{formUser.password1}}", ng-model="formUser.password2", placeholder="confirm password", title="The passwords must match", required)
+                      input(type="submit", value="Sign up", class="btn right")
+
+
+
+  script(src="/javascripts/angular/modules/AcademicsModule.js")
+  script(src="/javascripts/angular/controllers/LoginController.js")
+  script(src="/javascripts/angular/controllers/UserController.js")
