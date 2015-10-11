@@ -2,7 +2,7 @@
 *	@version 0.0.0
 *	@author Team Academics
 */
-var userModel = require("./../../database/models/UserModel");
+var userController = require("./../../database/controllers/UserController");
 
 var TwitterStrategy	 = require("passport-twitter").Strategy;
 var FacebookStrategy = require("passport-facebook").Strategy;
@@ -12,7 +12,7 @@ var LocalStrategy	 = require("passport-local").Strategy;
 var configPassport = require("./configPassport");
 
 function authenticationPassport (accessToken, refreshToken, profile, done) {
-		userModel.getById(profile.id, function(err, user) {
+		userController.getById(profile.id, function(err, user) {
 			if (err) {
 				console.log("ERROR rethinkdb getUserById: " + err.message);
 			} else if (user != null) {
@@ -20,14 +20,14 @@ function authenticationPassport (accessToken, refreshToken, profile, done) {
 				done(null, user);
 			} else {
 				// Se tiene que crear el usuario
-				userModel.insert({
+				userController.insert({
 					user_id : profile.id,
 					user_name  : profile.displayName,
 					user_photo : profile.photos[0].value,
 					user_login_type : profile.provider
 				}, function (err, results) {
 					if (results.inserted == 1){
-						userModel.getById(profile.id, function(err, user) {
+						userController.getById(profile.id, function(err, user) {
 							if (err){
 								console.log("ERROR: rethinkdb: " + err.message);
 							}else{
@@ -68,9 +68,9 @@ module.exports = function (passport) {
 
 	// Configuración de autenticación local
 	passport.use(new LocalStrategy(function(username, password, done) {
-	  userController.getUserIfExist(username, password, function(err, user) {
-			done(null, (user!=null) ? user : {errLogin : true});
-	  });
+		userController.getUserIfExist(username, password, function(err, user) {
+			done(null, (user!==null) ? user : {errLogin : true});
+		});
 	}));
 
 };

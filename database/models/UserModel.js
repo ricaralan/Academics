@@ -28,6 +28,19 @@ var UserModel = function() {
 			});
 	};
 
+	self.getByEmail = function(email, done) {
+		self.getDateConnection.doQuery(
+			self.getDateConnection.getR().table(self.table)
+			.filter({user_email : email})
+			, function(err, cursor) {
+				try {
+					cursor.toArray(done);
+				} catch(e) {
+					done(e);
+				}
+		}, done);
+	};
+
 }
 
 // UserModel extends of AbstractModel
