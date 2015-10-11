@@ -1,7 +1,8 @@
 var express = require("express"),
 	router = express.Router(),
 	userController = require("./../../database/controllers/UserController"),
-	passport = require("passport");
+	passport = require("passport"),
+	mailer   = require("./../../util/mailer");
 
 router.get("/", function(req, res) {
 	console.log(req.user);
@@ -22,6 +23,10 @@ router.post("/create", function(req, res) {
 	  			// Set credentials logIn
 	  			req.body.username = req.body.user.email;
 	        	req.body.password = req.body.user.password1;
+	        	// Send email confirmation account
+	        	mailer.sendConfirmEmail(req.body.user.email, data.generated_keys[0], function(err, data){
+	        		console.log(err, data);
+	        	});
 				userController.getById(data.generated_keys[0], function(err, user) {
 		          passport.authenticate('local', function(err, user, info) {
 		          	// Set variable session

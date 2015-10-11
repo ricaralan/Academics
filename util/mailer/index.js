@@ -19,6 +19,7 @@ var Mailer = function() {
 	*	@done function(err, info) {}
 	*/
 	this.sendMail = function(json, done) {
+		console.log(configMailer[json.type], configMailer[json.type].user, encriptation.decipher(configMailer[json.type].user));
 		if(json.type && configMailer[json.type]){
 			mailOptions = this.getMailOptions(json.type, json.to, json.subject, json.text, json.html);
 			transporter = this.getTransporter(configMailer[json.type].service,
@@ -30,6 +31,7 @@ var Mailer = function() {
 	};
 
 	this.getTransporter = function(service, user, pass) {
+		console.log(user, pass);
 		return nodemailer.createTransport({
 			service : service,
 			auth : {
