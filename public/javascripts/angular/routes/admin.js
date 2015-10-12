@@ -5,5 +5,7 @@ AcademicsModule.config(["$routeProvider", function($routeProvider) {
 	when("/categories/update/:id", {templateUrl : "/categories/update", controller : "CategoryController"}).
 	when("/sub_categories", {templateUrl : "/sub_categories"}).
 	when("/sub_categories/update/:id", {templateUrl : "/sub_categories/update", controller : "SubCategoryController"}).
+	when("/languajes", {templateUrl : "/languajes"}).
+	when("/languajes/update/:id", {templateUrl : "/languajes/update", controller : "LanguajeController"}).
 	otherwise({redirectTo : "/"});
 }]);

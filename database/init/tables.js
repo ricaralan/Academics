@@ -14,6 +14,11 @@ module.exports = [{
     primaryKey : "sub_category_id"
   }
 }, {
+  tableName : "academics_languaje",
+  options : {
+    primaryKey : "languaje_id"
+  }
+}, {
   tableName : "academics_course",
   options : {
     primaryKey : "course_id"
