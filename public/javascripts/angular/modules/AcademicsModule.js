@@ -1,1 +1,1 @@
-var AcademicsModule = angular.module("AcademicsModule", []);
+var AcademicsModule = angular.module("AcademicsModule", ["ngRoute"]);

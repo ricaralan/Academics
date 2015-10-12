@@ -32,6 +32,9 @@ app.use(passport.session());
 
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
+app.use('/_admin', require('./routes/admin'));
+app.use('/categories', require('./routes/categories'));
+app.use('/sub_categories', require('./routes/sub_categories'));
 
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/facebook',
