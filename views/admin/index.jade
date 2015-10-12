@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+    div(ng-app="AcademicsModule")
+        //app-for-users(user-photo="#{user.user_photo}")
+        app-for-users
+            h3(class="center") console admin
+            div(ng-view)
+            a(href="#categories") categories
+            a(href="#sub_categories") sub_categories
+    script(src="/javascripts/angular/routes/angular-route.js")
+    script(src="/javascripts/angular/routes/admin.js")
