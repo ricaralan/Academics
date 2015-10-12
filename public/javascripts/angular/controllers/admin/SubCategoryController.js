@@ -33,4 +33,15 @@ AcademicsModule.controller("SubCategoryController", ["$scope", "$http", "$routeP
 		});
 	};
 
+	$scope.deleteSubCategory = function(idDeleted) {
+		$http.delete("/sub_categories/delete/" + idDeleted).success(function(data) {
+			if (data.success) {
+				$scope.getSubCategories();
+				Materialize.toast("La sub-categoria se elimino correctamente", 1000);
+			} else {
+				Materialize.toast("Ocurrio un error!", 1000);
+			}
+		});
+	};
+
 }]);

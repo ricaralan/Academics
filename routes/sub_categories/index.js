@@ -28,6 +28,10 @@ router.post("/create", function(req, res) {
 
 router.put("/update", function(req, res) {});
 
-router.delete("/delete", function(req, res) {});
+router.delete("/delete/:id", function(req, res) {
+	subCategoryController.delete(req.params.id, function(err, data) {
+		res.send({success : !err && data.deleted === 1});
+	});
+});
 
 module.exports = router;
