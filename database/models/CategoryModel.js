@@ -9,6 +9,20 @@ var CategoryModel = function() {
 
 	self.table = "academics_category";
 
+	self.getAll = function(done) {
+		self.academicsConnection.doQuery(
+			self.academicsConnection.getR().table(self.table)
+			.orderBy("category_created"), function (err, cursor) {
+				try {
+					cursor.toArray(function(err, categories) {
+						done(err, categories);
+					});
+				} catch(e) {
+					done(e);
+				}
+		});
+	};
+
 }
 
 // CategoryModel extends of AbstractModel

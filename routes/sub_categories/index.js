@@ -2,7 +2,7 @@ var express = require("express"),
 	router = express.Router();
 
 router.get("/", function(req, res) {
-	res.send("sub_categories");
+	res.render("admin/sub_categories");
 });
 
 router.post("/create", function(req, res) {});

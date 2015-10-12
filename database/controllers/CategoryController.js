@@ -6,7 +6,11 @@
 var CategoryController = function() {
 
 	var self = this;
-	self.model = require("./../models/CategoryModel"),
+	self.model = require("./../models/CategoryModel");
+
+	self.getAll = function(done) {
+		self.model.getAll(done);
+	};
 
 };
 

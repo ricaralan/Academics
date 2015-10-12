@@ -1,0 +1,10 @@
+div(ng-controller="CategoryController", ng-init="getCategories()")
+	h1 categories
+
+	form(ng-submit="createCategory()")
+		input(type="text", placeholder="Nombre", ng-model="category.name", required)
+		input(type="submit")
+
+	p(ng-repeat="category in categories") {{category.category_name}}
+		a(href="", ng-click="deleteCategory(category.category_id)") delete
+

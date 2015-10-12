@@ -5,8 +5,10 @@ block content
         //app-for-users(user-photo="#{user.user_photo}")
         app-for-users
             h3(class="center") console admin
-            div(ng-view)
             a(href="#categories") categories
+            br
             a(href="#sub_categories") sub_categories
+            div(ng-view)
     script(src="/javascripts/angular/routes/angular-route.js")
     script(src="/javascripts/angular/routes/admin.js")
+    script(src="/javascripts/angular/controllers/admin/CategoryController.js")
