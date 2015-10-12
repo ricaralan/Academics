@@ -12,7 +12,7 @@ AcademicsModule.controller("CategoryController", ["$scope", "$http", "$routePara
 	};
 
 	$scope.setCategoryUpdate = function() {
-		$scope.category_update = $scope.getById($routeParams.id);
+		$scope.getById($routeParams.id);
 	};
 
 	$scope.createCategory = function() {

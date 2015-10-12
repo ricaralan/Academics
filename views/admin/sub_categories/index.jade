@@ -9,4 +9,5 @@ div(ng-controller="SubCategoryController", ng-init="getCategories();getSubCatego
 
 	p(ng-repeat="sub_category in sub_categories") {{sub_category.sub_category_name}}
 		a(href="", ng-click="deleteSubCategory(sub_category.sub_category_id)") delete
+		a(href="#/sub_categories/update/{{sub_category.sub_category_id}}") update
 

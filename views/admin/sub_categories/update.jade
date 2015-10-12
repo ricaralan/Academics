@@ -1,0 +1,6 @@
+div(ng-controller="SubCategoryController", ng-init="getCategories();setSubCategoryUpdate();")
+	form(ng-submit="updateSubCategory()")
+		select(class="browser-default", ng-model="sub_category_update.category_id")
+			option(ng-repeat="category in categories", value="{{category.category_id}}") {{category.category_name}}
+		input(type="text", placeholder="Nombre", ng-model="sub_category_update.sub_category_name", required)
+		input(type="submit")
