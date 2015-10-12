@@ -1,6 +1,6 @@
 var express = require("express"),
 	router = express.Router(),
-	categoriesController = require("./../../database/controllers/CategoryController");
+	categoryController = require("./../../database/controllers/CategoryController");
 
 router.get("/", function(req, res) {
 	res.render("admin/categories/");
@@ -11,14 +11,14 @@ router.get("/update", function(req, res) {
 });
 
 router.get("/get", function(req, res) {
-	categoriesController.getAll(function(err, categories) {
+	categoryController.getAll(function(err, categories) {
 		res.send(categories);
 	});
 });
 
 router.get("/get/:id", function(req, res) {
 	try {
-		categoriesController.getById(req.params.id, function(err, category) {
+		categoryController.getById(req.params.id, function(err, category) {
 			res.send(category);
 		});
 	} catch(e) {
@@ -28,7 +28,7 @@ router.get("/get/:id", function(req, res) {
 
 router.post("/create", function(req, res) {
 	try {
-		categoriesController.insert({
+		categoryController.insert({
 			category_name : req.body.category.name,
 			category_created : req.body.category.created
 		}, function(err, data) {
@@ -41,7 +41,7 @@ router.post("/create", function(req, res) {
 
 router.put("/update", function(req, res) {
 	try {
-		categoriesController.update(req.body.category.category_id, {
+		categoryController.update(req.body.category.category_id, {
 			category_name : req.body.category.category_name
 		}, function(err, data) {
 			res.send({success : !err && (data.replaced === 1 || data.unchanged === 1)});
@@ -52,7 +52,7 @@ router.put("/update", function(req, res) {
 });
 
 router.delete("/delete/:id", function(req, res) {
-	categoriesController.delete(req.params.id, function(err, data) {
+	categoryController.delete(req.params.id, function(err, data) {
 		res.send({success : !err && data.deleted === 1});
 	});
 });

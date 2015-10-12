@@ -6,7 +6,11 @@
 var SubCategoryController = function() {
 
 	var self = this;
-	self.model = require("./../models/SubCategoryModel"),
+	self.model = require("./../models/SubCategoryModel");
+
+	self.getAll = function(done) {
+		self.model.getAll(done);
+	};
 
 };
 

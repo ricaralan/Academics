@@ -4,7 +4,6 @@ AcademicsModule.controller("CategoryController", ["$scope", "$http", "$routePara
 	$scope.category = {};
 	$scope.category_update = {};
 	$scope.categories = [];
-	$routeParams.id;
 
 	$scope.getCategories = function() {
 		$http.get("/categories/get").success(function(categories) {
