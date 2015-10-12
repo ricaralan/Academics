@@ -10,8 +10,8 @@ router.get("/update", function(req, res) {
 	res.render("admin/sub_categories/update");
 });
 
-router.get("/get", function(req, res) {
-	subCategoryController.getAll(function(err, sub_categories) {
+router.get("/getByCategory/:id_category", function(req, res) {
+	subCategoryController.getSubCategoriesByCategory(req.params.id_category, function(err, sub_categories) {
 		res.send(sub_categories);
 	});
 });

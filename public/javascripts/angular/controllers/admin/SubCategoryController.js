@@ -12,8 +12,8 @@ AcademicsModule.controller("SubCategoryController", ["$scope", "$http", "$routeP
 		});
 	};
 
-	$scope.getSubCategories = function() {
-		$http.get("/sub_categories/get").success(function(sub_categories) {
+	$scope.getSubCategories = function(idCategory) {
+		$http.get("/sub_categories/getByCategory/" + idCategory).success(function(sub_categories) {
 			$scope.sub_categories = sub_categories;
 		});
 	};
@@ -28,8 +28,8 @@ AcademicsModule.controller("SubCategoryController", ["$scope", "$http", "$routeP
 			sub_category : $scope.sub_category
 		}).success(function(data) {
 			if (data.success) {
-				$scope.category = {};
-				$scope.getSubCategories();
+				$scope.sub_category.name = "";
+				$scope.getSubCategories($scope.sub_category.category_id);
 				Materialize.toast("La sub-categoria se creo correctamente", 1000);
 			} else {
 				Materialize.toast("Ocurrio un error!", 1000);
@@ -53,7 +53,7 @@ AcademicsModule.controller("SubCategoryController", ["$scope", "$http", "$routeP
 	$scope.deleteSubCategory = function(idDeleted) {
 		$http.delete("/sub_categories/delete/" + idDeleted).success(function(data) {
 			if (data.success) {
-				$scope.getSubCategories();
+				$scope.getSubCategories($scope.sub_category.category_id);
 				Materialize.toast("La sub-categoria se elimino correctamente", 1000);
 			} else {
 				Materialize.toast("Ocurrio un error!", 1000);

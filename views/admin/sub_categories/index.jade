@@ -1,8 +1,8 @@
-div(ng-controller="SubCategoryController", ng-init="getCategories();getSubCategories()")
+div(ng-controller="SubCategoryController", ng-init="getCategories();")
 	h1 sub categories
 
 	form(ng-submit="createSubCategory()")
-		select(class="browser-default", ng-model="sub_category.category_id", ng-change="getSubCategories()")
+		select(class="browser-default", ng-model="sub_category.category_id", ng-change="getSubCategories(sub_category.category_id)")
 			option(ng-repeat="category in categories", value="{{category.category_id}}") {{category.category_name}}
 		input(type="text", placeholder="Nombre", ng-model="sub_category.name", required)
 		input(type="submit")

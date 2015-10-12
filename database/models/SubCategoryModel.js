@@ -9,9 +9,11 @@ var SubCategoryModel = function() {
 
 	self.table = "academics_sub_category";
 
-	self.getAll = function(done) {
+	self.getSubCategoriesByCategory = function(idCategory, done) {
 		self.academicsConnection.doQuery(
-			self.academicsConnection.getR().table(self.table), function (err, cursor) {
+			self.academicsConnection.getR().table(self.table).filter({
+				category_id : idCategory
+			}), function (err, cursor) {
 				try {
 					cursor.toArray(function(err, sub_categories) {
 						done(err, sub_categories);

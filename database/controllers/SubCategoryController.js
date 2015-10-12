@@ -8,8 +8,8 @@ var SubCategoryController = function() {
 	var self = this;
 	self.model = require("./../models/SubCategoryModel");
 
-	self.getAll = function(done) {
-		self.model.getAll(done);
+	self.getSubCategoriesByCategory = function(idCategory, done) {
+		self.model.getSubCategoriesByCategory(idCategory, done);
 	};
 
 };
