@@ -6,6 +6,6 @@ div(ng-controller="LanguajeController", ng-init="getLanguajes()")
 		input(type="text", placeholder="Nombre", ng-model="languaje.name", required)
 		input(type="submit")
 
-	p(ng-repeat="languaje in languajes") {{languaje.languaje_name}}
+	p(ng-repeat="languaje in languajes") {{languaje.lang_name}}
 		a(href="", ng-click="deleteLanguaje(languaje.languaje_id)") eliminar
 		a(href="#/languajes/update/{{languaje.languaje_id}}", ) editar
