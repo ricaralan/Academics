@@ -1,12 +1,19 @@
-AcademicsModule.controller("CategoryController", ["$scope", "$http", function($scope, $http) {
+AcademicsModule.controller("CategoryController", ["$scope", "$http", "$routeParams", "$location", function($scope, $http, $routeParams, $location) {
+
 
 	$scope.category = {};
+	$scope.category_update = {};
 	$scope.categories = [];
+	$routeParams.id;
 
 	$scope.getCategories = function() {
 		$http.get("/categories/get").success(function(categories) {
 			$scope.categories = categories;
 		});
+	};
+
+	$scope.setCategoryUpdate = function() {
+		$scope.category_update = $scope.getById($routeParams.id);
 	};
 
 	$scope.createCategory = function() {
@@ -24,6 +31,19 @@ AcademicsModule.controller("CategoryController", ["$scope", "$http", function($s
 		});
 	};
 
+	$scope.updateCategory = function() {
+		$http.put("/categories/update", {
+			category : $scope.category_update
+		}).success(function(data) {
+			if (data.success) {
+				$location.path("categories");
+				Materialize.toast("La categoria se edito correctamente", 1000);
+			} else {
+				Materialize.toast("Ocurrio un error!", 1000);
+			}
+		});
+	};
+
 	$scope.deleteCategory = function(idDeleted) {
 		$http.delete("/categories/delete/" + idDeleted).success(function(data) {
 			if (data.success) {
@@ -32,6 +52,12 @@ AcademicsModule.controller("CategoryController", ["$scope", "$http", function($s
 			} else {
 				Materialize.toast("Ocurrio un error!", 1000);
 			}
+		});
+	};
+
+	$scope.getById = function(id) {
+		$http.get("/categories/get/"+id).success(function(category) {
+			$scope.category_update = category;
 		});
 	};
 

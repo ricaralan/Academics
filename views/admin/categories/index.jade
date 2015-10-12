@@ -7,4 +7,5 @@ div(ng-controller="CategoryController", ng-init="getCategories()")
 
 	p(ng-repeat="category in categories") {{category.category_name}}
 		a(href="", ng-click="deleteCategory(category.category_id)") delete
+		a(href="#/categories/update/{{category.category_id}}") update
 

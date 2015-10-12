@@ -1,0 +1,4 @@
+div(ng-controller="CategoryController", ng-init="setCategoryUpdate();")
+	form(ng-submit="updateCategory()")
+		input(type="text", placeholder="Nombre", ng-model="category_update.category_name", required)
+		input(type="submit")
