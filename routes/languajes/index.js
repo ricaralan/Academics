@@ -33,7 +33,7 @@ router.get("/get/:id", function(req, res) {
 router.post("/create", function(req, res) {
 	try {
 		languajeController.insert({
-			languaje_id : req.body.languaje.id,
+			languaje_code : req.body.languaje.code,
 			languaje_name : req.body.languaje.name
 		}, function(err, data) {
 			res.send({success : !err && data.inserted === 1});
@@ -47,7 +47,7 @@ router.put("/update", function(req, res) {
 	try {
 		languajeController.update(req.body.languaje.languaje_id, {
 			languaje_name : req.body.languaje.languaje_name,
-			languaje_id : req.body.languaje.languaje_id
+			languaje_code : req.body.languaje.languaje_code
 		}, function(err, data) {
 			res.send({success : !err && (data.replaced === 1 || data.unchanged === 1)});
 		});

@@ -1,1 +1,7 @@
-h1 languaje update
+div(ng-controller="LanguajeController", ng-init="setLanguajeUpdate()")
+	h1 languaje
+
+	form(ng-submit="updateLanguaje()")
+		input(type="text", placeholder="Codigo", ng-model="languaje_update.languaje_code", required)
+		input(type="text", placeholder="Nombre", ng-model="languaje_update.languaje_name", required)
+		input(type="submit")

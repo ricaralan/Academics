@@ -50,8 +50,8 @@ AcademicsModule.controller("SubCategoryController", ["$scope", "$http", "$routeP
 		});
 	};
 
-	$scope.deleteSubCategory = function(idDeleted) {
-		$http.delete("/sub_categories/delete/" + idDeleted).success(function(data) {
+	$scope.deleteSubCategory = function(idDelete) {
+		$http.delete("/sub_categories/delete/" + idDelete).success(function(data) {
 			if (data.success) {
 				$scope.getSubCategories($scope.sub_category.category_id);
 				Materialize.toast("La sub-categoria se elimino correctamente", 1000);
