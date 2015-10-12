@@ -1,0 +1,11 @@
+div(ng-controller="LanguajeController", ng-init="getLanguajes()")
+	h1 languaje
+
+	form(ng-submit="createLanguaje()")
+		input(type="text", placeholder="Codigo", ng-model="languaje.id", required)
+		input(type="text", placeholder="Nombre", ng-model="languaje.name", required)
+		input(type="submit")
+
+	p(ng-repeat="languaje in languajes") {{languaje.languaje_name}}
+		a(href="/", ) eliminar
+		a(href="#/languajes/update/{{languaje.languaje_id}}", ) editar

@@ -12,7 +12,7 @@ var LanguajeModel = function() {
 	self.getAll = function(done) {
 		self.academicsConnection.doQuery(
 			self.academicsConnection.getR().table(self.table)
-			), function (err, cursor) {
+			, function (err, cursor) {
 				try {
 					cursor.toArray(function(err, laguajes) {
 						done(err, laguajes);
