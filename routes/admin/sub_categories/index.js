@@ -1,6 +1,6 @@
 var express = require("express"),
 	router = express.Router(),
-	subCategoryController = require("./../../database/controllers/SubCategoryController");
+	subCategoryController = require("./../../../database/controllers/SubCategoryController");
 
 router.get("/", function(req, res) {
 	res.render("admin/sub_categories");

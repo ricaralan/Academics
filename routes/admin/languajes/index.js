@@ -1,25 +1,29 @@
 var express = require("express"),
 	router = express.Router(),
-	categoryController = require("./../../database/controllers/CategoryController");
+	languajeController = require("./../../../database/controllers/LanguajeController");
 
 router.get("/", function(req, res) {
-	res.render("admin/categories/");
+	res.render("admin/languaje");
 });
 
 router.get("/update", function(req, res) {
-	res.render("admin/categories/update");
+	res.render("admin/languaje/update");
 });
 
-router.get("/get", function(req, res) {
-	categoryController.getAll(function(err, categories) {
-		res.send(categories);
-	});
+router.get("/get/", function(req, res) {
+	try {
+		languajeController.getAll(function(err, languajes) {
+			res.send(languajes);
+		});
+	} catch(e) {
+		res.send({err : "Not found", data : null});
+	}
 });
 
 router.get("/get/:id", function(req, res) {
 	try {
-		categoryController.getById(req.params.id, function(err, category) {
-			res.send(category);
+		languajeController.getById(req.params.id, function(err, languaje) {
+			res.send(languaje);
 		});
 	} catch(e) {
 		res.send({err : "Not found", data : null});
@@ -28,9 +32,9 @@ router.get("/get/:id", function(req, res) {
 
 router.post("/create", function(req, res) {
 	try {
-		categoryController.insert({
-			category_name : req.body.category.name,
-			category_created : req.body.category.created
+		languajeController.insert({
+			lang_code : req.body.languaje.code,
+			lang_name : req.body.languaje.name
 		}, function(err, data) {
 			res.send({success : !err && data.inserted === 1});
 		});
@@ -41,8 +45,9 @@ router.post("/create", function(req, res) {
 
 router.put("/update", function(req, res) {
 	try {
-		categoryController.update(req.body.category.category_id, {
-			category_name : req.body.category.category_name
+		languajeController.update(req.body.languaje.languaje_id, {
+			lang_name : req.body.languaje.lang_name,
+			lang_code : req.body.languaje.lang_code
 		}, function(err, data) {
 			res.send({success : !err && (data.replaced === 1 || data.unchanged === 1)});
 		});
@@ -52,7 +57,7 @@ router.put("/update", function(req, res) {
 });
 
 router.delete("/delete/:id", function(req, res) {
-	categoryController.delete(req.params.id, function(err, data) {
+	languajeController.delete(req.params.id, function(err, data) {
 		res.send({success : !err && data.deleted === 1});
 	});
 });
