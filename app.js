@@ -36,6 +36,7 @@ app.use('/_admin', require('./routes/admin'));
 app.use('/categories', require('./routes/admin/categories'));
 app.use('/sub_categories', require('./routes/admin/sub_categories'));
 app.use('/languajes', require('./routes/admin/languajes'));
+app.use('/courses', require('./routes/courses/'));
 
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/facebook',

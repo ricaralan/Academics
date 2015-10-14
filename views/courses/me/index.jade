@@ -1,11 +1,14 @@
-extends layout
+extends ../layout
 
 block content
 
     div(ng-app="AcademicsModule")
         app-for-users
-            h3 MOSTRAR TODOS LOS CURSOS DISPONIBLES
-            //div
+            h3 mis cursos
+            ul
+                li <a href="#">Tomando</a>
+                li <a href="#">Enseñando</a>
+            //div(id="page")
                 textarea(id="redactor_content", name="content")
 
 
