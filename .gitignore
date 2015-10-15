@@ -2,3 +2,4 @@ node_modules/*
 rethinkdb_data/*
 npm_debug.log
 util/mailer/ConfigMailer.js
+annotations.txt
