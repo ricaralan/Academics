@@ -8,9 +8,8 @@ AcademicsModule.controller("LoginController", ["$scope", "$http", function($scop
 			username : $scope.username,
 			password : $scope.password
 		}).success(function(login) {
-			console.log(login);
 			if(login.success) {
-				window.location = successLocation;
+				window.location = "/courses";
 			} else {
 				Materialize.toast("Usuario o contraseña incorrecto!", 2000);
 				$scope.password = "";

@@ -4,11 +4,18 @@ block content
 
     div(ng-app="AcademicsModule")
         app-for-users
-            h3 MOSTRAR TODOS LOS CURSOS DISPONIBLES
+            // primero creare todo lo referente a los cursos de las personas
+            h3 mis coursos
+            a(href="#create") create
+            div(ng-view)
             //div
                 textarea(id="redactor_content", name="content")
+
+
 
 
     //link(rel="stylesheet" type="text/css" href="/javascripts/redactor/redactor.css")
     //script(src="/javascripts/redactor/redactor.js")
     //script(src="/javascripts/test.js")
+    script(src="/javascripts/angular/routes/courses.js")
+    script(src="/javascripts/angular/controllers/CoursesController.js")
