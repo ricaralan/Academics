@@ -5,8 +5,10 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('Academics:server');
-var http = require('http');
+    debug = require('debug')('Academics:server');
+    http = require('http'),
+    https  = require('https'),
+    fs   = require('fs');
 
 /**
  * Get port from environment and store in Express.
@@ -14,6 +16,18 @@ var http = require('http');
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
+
+/**
+* set options certificate to https
+*/
+var options = {
+  key  : fs.readFileSync("./bin/cert/key.pem"),
+  cert : fs.readFileSync("./bin/cert/cert.pem"),
+  ca   : fs.readFileSync("./bin/cert/key-csr.pem")
+};
+
+// HTTPS SERVER
+//var server = https.createServer(options, app);
 
 /**
  * Create HTTP server.
