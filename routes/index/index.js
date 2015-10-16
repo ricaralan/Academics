@@ -11,7 +11,7 @@ router.get("/", function (req, res) {
 		});
 	} else {
 		// Hay un usuario logueado
-		res.render("academics_views", {
+		res.render("index", {
 		    title : "Academics",
 		    user  : req.user
 		  });
@@ -26,7 +26,7 @@ router.get("/login", function (req, res) {
 		});
 	} else {
 		// Hay un usuario logueado
-		res.render("academics_views", {
+		res.render("index", {
 		    title : "Academics",
 		    user  : req.user
 		  });
