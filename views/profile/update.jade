@@ -1,0 +1,9 @@
+h3 update view
+div(ng-controller="ProfileController", ng-init="setProfileUpdate();")
+		form(ng-submit="updateProfile()")
+			input(type="text", placeholder="Perfil", ng-model="profile.profile_name", required)
+			select(class="browser-default", ng-model="profile.profile_type")
+				option(value="" disabled) Seleccione..
+				option(value="0") Necesario 
+				option(value="1") Adquirir
+			input(type="submit")

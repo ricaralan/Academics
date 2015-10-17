@@ -1,0 +1,12 @@
+h3 show data in a table or other method
+div(ng-init="getProfiles()")
+	table
+		tr
+			th Nombre
+			th Tipo
+			th 
+		tr(ng-repeat="profile in profiles")
+			td {{ profile.profile_name }}
+			td {{ profile.profile_type }}
+			td
+				a(href="#update/{{ profile.profile_id }}") Actualizar

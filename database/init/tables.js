@@ -28,4 +28,9 @@ module.exports = [{
   options : {
     primaryKey : "level_id"
   }
+}, {
+  tableName : "academics_profile",
+  options : {
+    primaryKey : "profile_id"
+  }
 }];

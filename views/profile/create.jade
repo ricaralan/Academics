@@ -1,0 +1,8 @@
+h3 create view
+form(ng-controller="ProfileController",ng-submit="createProfile()")
+	input(type="text", placeholder="Perfil", ng-model="profile.name", required)
+	select(class="browser-default", ng-model="profile.type")
+		option(value="" disabled selected) Seleccione.. 
+		option(value="0") Necesario 
+		option(value="1") Adquirir
+	input(type="submit")
