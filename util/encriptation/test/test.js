@@ -8,7 +8,8 @@ var crypto	= require("crypto");
 
 // Esta es la llave con la que se encriptara todo en realidad pudo haber sido
 // solo un "var key = 'llave';" pero me gusta lo complicado! =-)
-var key 	= "<key>RAOR@_|.-.|_@:?940203!@OpenSSL</key>";
+//var key 	= "<key>RAOR@_|.-.|_@:?940203!@OpenSSL</key>";
+var key = "<key>Academics!:@_|.-.|_@:!@OpenSSL</key>";
 
 // Para que funcione todo esto se require de un algorimo OpenSSL el cual se puede encontrar
 // poniendo en la consola 'openssl list-cipher-algorithms'... en mi caso escogí RC4
@@ -30,9 +31,9 @@ function decifrar(palabraCifrada){
 	return palabraDecifrada;
 }
 
-var texto 	   = "Algun texto para encriptar";
+var texto 	   = "jajajajajaaj";
 var encriptado =  encriptar(texto);
 
 assert.equal(texto, decifrar(encriptado));
-
+console.log(encriptado);
 console.log("Test exitoso!");

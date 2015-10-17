@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+	h2 archivo index
+	div(ng-app="AcademicsModule", ng-controller="LevelController")
+		div(ng-view)
+
+		form(ng-submit="createLevel()")
+			input(type="text", placeholder="Nivel", ng-model="level.name", required)
+			input(type="submit")
+
+	script(src="/javascripts/angular/routes/levels.js")
+	script(src="/javascripts/angular/controllers/LevelController.js")
