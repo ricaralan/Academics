@@ -1,1 +1,4 @@
 h3 create view
+form(ng-controller="LevelController",ng-submit="createLevel()")
+	input(type="text", placeholder="Nivel", ng-model="level.name", required)
+	input(type="submit")

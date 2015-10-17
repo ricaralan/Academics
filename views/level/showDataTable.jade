@@ -1,3 +1,10 @@
 h3 show data in a table or other method
 div(ng-init="getLevels()")
-	p {{levels}}
+	table
+		tr
+			th Nombre
+			th 
+		tr(ng-repeat="level in levels")
+			td {{ level.level_name }}
+			td
+				a(href="#update/{{ level.level_id }}") Actualizar

@@ -7,10 +7,12 @@ AcademicsModule.controller("LevelController", ["$scope", "$http", "$routeParams"
 	};
 
 	$scope.getById = function(id) {
-		$http.get("/level/getById/"+id).success(function(data) {});
+		$http.get("/level/getById/"+id).success(function(data) {
+			$scope.level = data;
+		});
 	};
 
-	$scope.setUpdate = function() {
+	$scope.setLevelUpdate = function() {
 		$scope.getById($routeParams.id);
 	};
 
@@ -19,8 +21,8 @@ AcademicsModule.controller("LevelController", ["$scope", "$http", "$routeParams"
 			data : {level : $scope.level}
 		}).success(function(data) {
 			if (data.success) {
-				$scope.level = {};
-				$scope.getLevels();
+				$location.path("/");
+				Materialize.toast("Nivel creado correctamente!", 1000);
 			} else {
 				Materialize.toast("Ocurrio un error!", 1000);
 			}
@@ -35,7 +37,8 @@ AcademicsModule.controller("LevelController", ["$scope", "$http", "$routeParams"
 			}
 		}).success(function(data) {
 			if (data.success) {
-				//$location.path("/");
+				Materialize.toast("Nivel actualizado correctamente!", 1000);
+				$location.path("/");
 			} else {
 				Materialize.toast("Ocurrio un error!", 1000);
 			}

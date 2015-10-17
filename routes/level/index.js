@@ -62,8 +62,8 @@ router.post("/create/", function (req, res) {
 router.put("/update/", function (req, res) {
 	// implements action update data by id
 	try {
-		levelController.update(req.body.data.level.level_id, {
-			level_name : req.body.data.level_name
+		levelController.update(req.body.data.level_id, {
+			level_name : req.body.data.level.level_name
 		}, function(err, data) {
 			res.send({success : !err && (data.replaced === 1 || data.unchanged === 1)});
 		});
