@@ -1,5 +1,5 @@
 h3 update basic data
-form(ng-controller="CoursesController", ng-submit="setUpdateData();updateCourse()")
+form(ng-controller="CoursesController", ng-submit="updateCourse()", ng-init="setUpdateData()")
 	input(type="text", placeholder="Nombre del curso", required, ng-model="course.name")
 	select(class="browser-default", ng-init="getLanguajes()", ng-model="course.languaje_id")
 			option(ng-repeat="languaje in languajes", value="{{languaje.languaje_id}}") {{languaje.lang_name}}

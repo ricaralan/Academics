@@ -25,7 +25,7 @@ AcademicsModule.controller("CoursesController", ["$scope", "$http", "$routeParam
 	};
 
 	$scope.getById = function(id) {
-		$scope.get("/courses/me/get/"+id, function(data) {
+		$http.get("/courses/me/get/" + id).success(function(data) {
 			$scope.course = data;
 		});
 	};
