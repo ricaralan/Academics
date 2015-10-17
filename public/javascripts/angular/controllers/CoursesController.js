@@ -1,6 +1,6 @@
 AcademicsModule.controller("CoursesController", ["$scope", "$http", "$routeParams", "$location", function($scope, $http, $routeParams, $location) {
 
-	$scope.idCategory = null;
+	$scope.course = {};
 
 	$scope.getLanguajes = function() {
 		$http.get("/languajes/get").success(function(languajes) {
@@ -15,8 +15,14 @@ AcademicsModule.controller("CoursesController", ["$scope", "$http", "$routeParam
 	};
 
 	$scope.getSubCategories = function() {
-		$http.get("/sub_categories/getByCategory/" + $scope.idCategory).success(function(sub_categories) {
+		$http.get("/sub_categories/getByCategory/" + $scope.course.category_id).success(function(sub_categories) {
 			$scope.sub_categories = sub_categories;
+		});
+	};
+
+	$scope.createCourse = function() {
+		$http.post("/courses/create", {data : {course : $scope.course}}).success(function(data) {
+			console.log(data);
 		});
 	};
 

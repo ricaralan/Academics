@@ -1,5 +1,6 @@
 var express = require("express"),
-	router  = express.Router();
+	router  = express.Router(),
+	courseController = require("./../../database/controllers/CourseController");
 
 router.get("/", function(req, res) {
 	// get page with courses
@@ -29,20 +30,34 @@ router.get("/me/create", function(req, res) {
 	res.render("courses/me/createCourse");
 });
 
-router.post("/me/create", function(req, res) {
+router.post("/create", function(req, res) {
 	// create course
+	try {
+		course = req.body.data.course;
+		courseController.insert( {
+			languaje_id : course.languaje_id,
+			category_id : course.category_id,
+			sub_category_id : course.sub_category_id,
+			course_name : course.name
+		}, function(err, data) {
+			console.log(err, data);
+			res.send(data);
+		});
+	} catch(e) {
+		res.send({error : "not found"});
+	}
 });
 
-router.get("/me/update-basic-data", function(req, res) {
+router.get("/update-basic-data", function(req, res) {
 	// get view update basic data
 	res.render("courses/me/updateBasicData");
 });
 
-router.put("/me/update/:course_id", function(req, res) {
+router.put("/update/:course_id", function(req, res) {
 	// update course
 });
 
-router.delete("/me/delete/course_id", function(req, res) {
+router.delete("/delete/course_id", function(req, res) {
 	// delete specifict course
 });
 

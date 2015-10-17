@@ -6,7 +6,7 @@
 var CourseController = function() {
 
 	var self = this;
-	self.model = require("./../models/CourseModel"),
+	self.model = require("./../models/CourseModel");
 
 };
 
