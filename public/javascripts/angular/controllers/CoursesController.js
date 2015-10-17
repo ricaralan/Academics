@@ -1,4 +1,4 @@
-AcademicsModule.controller("CoursesController", ["$scope", "$http", "$routeParams", "$location", function($scope, $http, $routeParams, $location) {
+AcademicsModule.controller("CoursesController", ["$scope", "$http", "$routeParams", "$location", "$timeout", function($scope, $http, $routeParams, $location, $timeout) {
 
 	$scope.course = {};
 
@@ -14,7 +14,10 @@ AcademicsModule.controller("CoursesController", ["$scope", "$http", "$routeParam
 		});
 	};
 
-	$scope.getSubCategories = function() {
+	$scope.getSubCategories = function(category_id) {
+		if(category_id) {
+			$scope.course.category_id = category_id;	
+		}
 		$http.get("/sub_categories/getByCategory/" + $scope.course.category_id).success(function(sub_categories) {
 			$scope.sub_categories = sub_categories;
 		});
@@ -26,7 +29,10 @@ AcademicsModule.controller("CoursesController", ["$scope", "$http", "$routeParam
 
 	$scope.getById = function(id) {
 		$http.get("/courses/me/get/" + id).success(function(data) {
-			$scope.course = data;
+			$timeout(function() {
+				$scope.course = data;
+			}, 1);
+			$scope.getSubCategories(data.category_id);
 		});
 	};
 
