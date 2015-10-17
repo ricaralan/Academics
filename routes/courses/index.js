@@ -23,6 +23,9 @@ router.get("/me/admin", function(req, res) {
 
 router.get("/me/get/:courseId", function(req, res) {
 	// get pages sspecifict course
+	courseController.getById(req.params.courseId, function(err, data) {
+		res.send(data);
+	});
 });
 
 router.get("/me/create", function(req, res) {
@@ -41,7 +44,7 @@ router.post("/create", function(req, res) {
 			course_name : course.name
 		}, function(err, data) {
 			console.log(err, data);
-			res.send(data);
+			res.send({success : !err && data.inserted === 1});
 		});
 	} catch(e) {
 		res.send({error : "not found"});

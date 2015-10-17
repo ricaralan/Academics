@@ -20,9 +20,22 @@ AcademicsModule.controller("CoursesController", ["$scope", "$http", "$routeParam
 		});
 	};
 
+	$scope.setUpdateData = function() {
+		$scope.getById($routeParams.id);
+	};
+
+	$scope.getById = function(id) {
+		$scope.get("/courses/me/get/"+id, function(data) {
+			$scope.course = data;
+		});
+	};
+
 	$scope.createCourse = function() {
 		$http.post("/courses/create", {data : {course : $scope.course}}).success(function(data) {
-			console.log(data);
+			if(data.success) {
+				$location.path("/");
+				Materialize.toast("Curso creado correctamente!", 1000);
+			}
 		});
 	};
 
