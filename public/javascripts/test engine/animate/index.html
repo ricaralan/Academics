@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animate</title>
+	<script src="../../fabric.min.js"></script>
+</head>
+<body>
+
+<canvas id="canvas" width="500" height="400" style="border:solid 1px #000;display:inline"></canvas>
+<button id="animate">animate</button>
+<script>
+	(function(){
+
+		var canvas = null,
+			context = null,
+			rect = null,
+			btnAnimate = null;
+
+		function init() {
+			canvas = new fabric.Canvas("canvas");
+			btnAnimate = document.getElementById("animate");
+			rect = new fabric.Rect({
+				left : 100,
+				top : 50,
+				height : 50,
+				width : 50,
+				fill : "#4a5664"
+			});
+			btnAnimate.onclick = function() {
+				rect.animate("left", 400, {
+					duration : 1000,
+					onChange : canvas.renderAll.bind(canvas)
+				});
+			}
+			canvas.add(rect);
+		}
+
+		init();
+
+	})();
+
+</script>
+
+</body>
+</html>

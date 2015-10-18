@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Eventos</title>
+	<script src="../../fabric.min.js"></script>
+
+</head>
+<body>
+
+	<canvas id="canvas" width="500" height="400" style="border:solid 1px #000;display:inline"></canvas>
+	<div>
+		<p> X: <input type="range" id="rangeX"> </p>
+		<p> Y: <input type="range" id="rangeY"> </p>
+	</div>
+
+	<script>
+		(function(){
+			var canvas  = null,
+				context = null,
+				rect = null,
+				controls = {
+					x : {
+						onchange : function() {
+							rect.setLeft((parseInt(this.value)*canvas.width)/100 ).setCoords();
+							canvas.renderAll();
+						}
+					}, y : {
+						onchange : function() {
+							rect.setTop((parseInt(this.value)*canvas.height)/100 ).setCoords();
+							canvas.renderAll();
+						}
+					}
+				}, rangeX = null, rangeY = null;
+
+			rangeX = document.getElementById("rangeX");
+			rangeY = document.getElementById("rangeY");
+
+			rangeX.addEventListener("change", controls.x.onchange);
+			rangeY.addEventListener("change", controls.y.onchange);
+
+			var getById = function(id) { return document.getElementById(id); };
+
+
+
+			function init() {
+				canvas = new fabric.Canvas("canvas");
+				rect = new fabric.Rect({
+					top : 100,
+					left: 100,
+					width : 50,
+					height : 50,
+					fill : "#4a5664"
+				});
+				canvas.add(rect);
+				canvas.on({
+					"object:moving" : function() {
+						console.log(  );
+						rangeX.value = (rect.getLeft()/canvas.width)*100;
+						rangeY.value =(rect.getTop()/canvas.height)*100;
+					}
+				});
+			}
+
+			init();
+		})();
+	</script>
+
+</body>
+</html>
