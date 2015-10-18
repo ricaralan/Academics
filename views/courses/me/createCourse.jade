@@ -1,13 +1,16 @@
 h3 create course
 form(ng-controller="CoursesController", ng-submit="createCourse()")
 	input(type="text", placeholder="Nombre del curso", required, ng-model="course.name")
+	label(class="active") Elija el Idioma
 	select(class="browser-default", ng-init="getLanguajes()", ng-model="course.languaje_id")
-			option(ng-repeat="languaje in languajes", value="{{languaje.languaje_id}}") {{languaje.lang_name}}
-	p Elije una sub categoria
+		option(value disabled selected) Seleccione el idioma 
+		option(ng-repeat="languaje in languajes", value="{{languaje.languaje_id}}") {{languaje.lang_name}}
+	label(class="active") Elija la Categoría
 	select(class="browser-default", ng-init="getCategories()", ng-change="getSubCategories()", ng-model="course.category_id")
-		option Elige una categoria
+		option(value disabled selected) Seleccione la categoría
 		option(ng-repeat="category in categories", value="{{category.category_id}}") {{category.category_name}}
-	p Elije una sub categoria
+	label(class="active") Elija Sub-Categoría
 	select(class="browser-default", ng-model="course.sub_category_id")
+		option(value disabled selected) Seleccione la sub-categoría
 		option(ng-repeat="sub_category in sub_categories", value="{{sub_category.sub_category_id}}") {{sub_category.sub_category_name}}
 	input(type="submit")
