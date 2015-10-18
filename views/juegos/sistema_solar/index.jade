@@ -1,0 +1,11 @@
+extends ../../layout
+
+block content
+    div(ng-app="AcademicsModule")
+        app-for-users
+            .container
+                canvas(id="canvas", width="1000", height="1000")
+
+
+    script(src="/javascripts/fabric.min.js")
+    script(src="/javascripts/games/SolarSystem.js")

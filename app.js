@@ -39,6 +39,7 @@ app.use('/languajes', require('./routes/admin/languajes'));
 app.use('/courses', require('./routes/courses/'));
 app.use('/level', require('./routes/level/'));
 app.use('/profile', require('./routes/profile/'));
+app.use('/games', require('./routes/games/'));
 
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/facebook',
