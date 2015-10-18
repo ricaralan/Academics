@@ -1,212 +1,220 @@
-(function() {
-  fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
+window.addEventListener("load", function() {
 
-  var canvas = this.__canvas = new fabric.Canvas('canvas', {
-    hoverCursor: 'pointer',
-    selection: false,
-    perPixelTargetFind: true,
-    targetFindTolerance: 5
-  });
+  setTimeout(function() {
+    (function() {
 
-  // load sun and center it
-  fabric.Image.fromURL('/images/games/sun.png', function(sunImg) {
-    canvas.add(sunImg);
-    sunImg.center();
-  });
+      fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
 
-  var planetSize = 26,
-      totalPlanets = 12,
-      rotationSpeed = 20000,
-      orbits = [ ],
-      planets = [ ],
-      planetNames = ['Selene', 'Mimas', 'Ares', 'Enceladus', 'Tethys', 'Dione',
-                     'Zeus', 'Rhea', 'Titan', 'Janus', 'Hyperion', 'Iapetus'];
+      var canvas = this.__canvas = new fabric.Canvas('canvas', {
+        hoverCursor: 'pointer',
+        selection: false,
+        perPixelTargetFind: true,
+        targetFindTolerance: 5
+      });
 
-  var hoverCircle = new fabric.Circle({
-    radius: 13,
-    fill: '#000',
-    stroke: 'rgb(0,192,255)',
-    strokeWidth: 3,
-    left: -100,
-    top: -100
-  });
+      // load sun and center it
+      fabric.Image.fromURL('/images/games/sun.png', function(sunImg) {
+        canvas.add(sunImg);
+        sunImg.center();
+      });
 
-  var planetLabel = new fabric.Text('', {
-    fill: '#fff',
-    fontSize: 16,
-    fontFamily: 'Open Sans',
-    textBackgroundColor: '#002244'
-  });
+      var planetSize = 26,
+          totalPlanets = 12,
+          rotationSpeed = 20000,
+          orbits = [ ],
+          planets = [ ],
+          planetNames = ['Selene', 'Mimas', 'Ares', 'Enceladus', 'Tethys', 'Dione',
+                         'Zeus', 'Rhea', 'Titan', 'Janus', 'Hyperion', 'Iapetus'];
 
-  // load sprite with planets
-  fabric.Image.fromURL('/images/games/planets.png', function(planetsImg) {
+      var hoverCircle = new fabric.Circle({
+        radius: 13,
+        fill: '#000',
+        stroke: 'rgb(0,192,255)',
+        strokeWidth: 3,
+        left: -100,
+        top: -100
+      });
 
-    // temp canvas to generate planet images
-    var tempCanvas = new fabric.StaticCanvas();
+      var planetLabel = new fabric.Text('', {
+        fill: '#fff',
+        fontSize: 16,
+        fontFamily: 'Open Sans',
+        textBackgroundColor: '#002244'
+      });
 
-    // only to fit one planet onto temp canvas
-    tempCanvas.setDimensions({
-      width: planetSize,
-      height: planetSize
-    });
+      // load sprite with planets
+      fabric.Image.fromURL('/images/games/planets.png', function(planetsImg) {
 
-    // make sure image is drawn from left/top corner
-    planetsImg.originX = 'left';
-    planetsImg.originY = 'top';
+        // temp canvas to generate planet images
+        var tempCanvas = new fabric.StaticCanvas();
 
-    // add it onto temp canvas
-    tempCanvas.add(planetsImg);
+        // only to fit one planet onto temp canvas
+        tempCanvas.setDimensions({
+          width: planetSize,
+          height: planetSize
+        });
 
-    for (var i = 0; i < totalPlanets; i++) {
-      createOrbit(i);
-    }
-    canvas.add(hoverCircle);
+        // make sure image is drawn from left/top corner
+        planetsImg.originX = 'left';
+        planetsImg.originY = 'top';
 
-    for (var i = 0; i < totalPlanets; i++) {
-      var planet = createPlanet(i, planetsImg, tempCanvas);
-      planets.push(planet);
-      animatePlanet(planet, i);
-    }
+        // add it onto temp canvas
+        tempCanvas.add(planetsImg);
 
-    canvas.add(planetLabel);
-  });
+        for (var i = 0; i < totalPlanets; i++) {
+          createOrbit(i);
+        }
+        canvas.add(hoverCircle);
 
-  function createOrbit(i) {
-    var orbit = new fabric.Circle({
-      radius: 26 * i + 90,
-      left: canvas.getWidth() / 2,
-      top: canvas.getHeight() / 2,
-      fill: '',
-      stroke: 'rgba(0,192,255,0.5)',
-      hasBorders: false,
-      hasControls: false,
-      lockMovementX: true,
-      lockMovementY: true,
-      index: i
-    });
-    canvas.add(orbit);
-    orbits.push(orbit);
-  }
+        for (var i = 0; i < totalPlanets; i++) {
+          var planet = createPlanet(i, planetsImg, tempCanvas);
+          planets.push(planet);
+          animatePlanet(planet, i);
+        }
 
-  function createPlanet(i, planetsImg, tempCanvas) {
+        canvas.add(planetLabel);
+      });
 
-    // offset planets sprite to fit each of the planets onto it
-    planetsImg.left = -planetSize * i;
-    planetsImg.setCoords();
-    tempCanvas.renderAll();
+      function createOrbit(i) {
+        var orbit = new fabric.Circle({
+          radius: 26 * i + 90,
+          left: canvas.getWidth() / 2,
+          top: canvas.getHeight() / 2,
+          fill: '',
+          stroke: 'rgba(0,192,255,0.5)',
+          hasBorders: false,
+          hasControls: false,
+          lockMovementX: true,
+          lockMovementY: true,
+          index: i
+        });
+        canvas.add(orbit);
+        orbits.push(orbit);
+      }
 
-    // get data url for that planet
-    var img = new Image;
-    img.src = tempCanvas.toDataURL();
+      function createPlanet(i, planetsImg, tempCanvas) {
 
-    // create image of a planet from data url
-    var oImg = new fabric.Image(img, {
+        // offset planets sprite to fit each of the planets onto it
+        planetsImg.left = -planetSize * i;
+        planetsImg.setCoords();
+        tempCanvas.renderAll();
 
-      width: planetSize,
-      height: planetSize,
+        // get data url for that planet
+        var img = new Image;
+        img.src = tempCanvas.toDataURL();
 
-      name: planetNames[i],
-      index: i,
+        // create image of a planet from data url
+        var oImg = new fabric.Image(img, {
 
-      // position planet 90px from canvas center and 26px from previous planet
-      left: (canvas.getWidth() / 2) - 90 - (planetSize * i),
-      top: canvas.getHeight() / 2,
+          width: planetSize,
+          height: planetSize,
 
-      // remove borders and corners but leaving object available for events
-      hasBorders: false,
-      hasControls: false
-    });
+          name: planetNames[i],
+          index: i,
 
-    canvas.add(oImg);
-    return oImg;
-  }
+          // position planet 90px from canvas center and 26px from previous planet
+          left: (canvas.getWidth() / 2) - 90 - (planetSize * i),
+          top: canvas.getHeight() / 2,
 
-  function animatePlanet(oImg, planetIndex) {
+          // remove borders and corners but leaving object available for events
+          hasBorders: false,
+          hasControls: false
+        });
 
-    var radius = planetIndex * 26 + 90,
+        canvas.add(oImg);
+        return oImg;
+      }
 
-        // rotate around canvas center
-        cx = canvas.getWidth() / 2,
-        cy = canvas.getHeight() / 2,
+      function animatePlanet(oImg, planetIndex) {
 
-        // speed of rotation slows down for further planets
-        duration = (planetIndex + 1) * rotationSpeed,
+        var radius = planetIndex * 26 + 90,
 
-        // randomize starting angle to avoid planets starting on one line
-        startAngle = fabric.util.getRandomInt(-180, 0),
-        endAngle = startAngle + 359;
+            // rotate around canvas center
+            cx = canvas.getWidth() / 2,
+            cy = canvas.getHeight() / 2,
 
-    (function animate() {
+            // speed of rotation slows down for further planets
+            duration = (planetIndex + 1) * rotationSpeed,
 
-      fabric.util.animate({
-        startValue: startAngle,
-        endValue: endAngle,
-        duration: duration,
+            // randomize starting angle to avoid planets starting on one line
+            startAngle = fabric.util.getRandomInt(-180, 0),
+            endAngle = startAngle + 359;
 
-        // linear movement
-        easing: function(t, b, c, d) { return c*t/d + b; },
+        (function animate() {
 
-        onChange: function(angle) {
-          angle = fabric.util.degreesToRadians(angle);
+          fabric.util.animate({
+            startValue: startAngle,
+            endValue: endAngle,
+            duration: duration,
 
-          var x = cx + radius * Math.cos(angle);
-          var y = cy + radius * Math.sin(angle);
+            // linear movement
+            easing: function(t, b, c, d) { return c*t/d + b; },
 
-          oImg.set({ left: x, top: y }).setCoords();
+            onChange: function(angle) {
+              angle = fabric.util.degreesToRadians(angle);
 
-          // only render once
-          if (planetIndex === totalPlanets - 1) {
-            canvas.renderAll();
-          }
-        },
-        onComplete: animate
+              var x = cx + radius * Math.cos(angle);
+              var y = cy + radius * Math.sin(angle);
+
+              oImg.set({ left: x, top: y }).setCoords();
+
+              // only render once
+              if (planetIndex === totalPlanets - 1) {
+                canvas.renderAll();
+              }
+            },
+            onComplete: animate
+          });
+        })();
+      }
+
+      var hoverTarget, prevHoverTarget;
+
+      canvas.on('mouse:over', function(options) {
+        hoverTarget = options.target;
+      });
+
+      canvas.on('mouse:out', function(options) {
+        hoverTarget = null;
+        prevHoverTarget = options.target;
+      });
+
+      canvas.on('after:render', function() {
+        if (hoverTarget) {
+
+          var hoveredPlanet = planets[hoverTarget.index];
+          var hoveredOrbit = orbits[hoveredPlanet.index];
+
+          hoveredOrbit.set({
+            strokeWidth: 3,
+            stroke: 'rgb(0,192,255)'
+          });
+
+          hoverCircle.set({
+            left: hoveredPlanet.left,
+            top: hoveredPlanet.top
+          });
+
+          planetLabel.set({
+            left: hoveredPlanet.left + 50,
+            top: hoveredPlanet.top + 20,
+            text: hoveredPlanet.name
+          });
+        }
+        else {
+          hoverCircle.set({ left: -100, top: -100 });
+          planetLabel.set({ left: -100, top: -100 });
+
+          prevHoverTarget &&
+          orbits[prevHoverTarget.index] &&
+          orbits[prevHoverTarget.index].set({
+            strokeWidth: 1,
+            stroke: 'rgba(0,192,255,0.5)'
+          });
+        }
       });
     })();
-  }
 
-  var hoverTarget, prevHoverTarget;
+  }, 1000);
 
-  canvas.on('mouse:over', function(options) {
-    hoverTarget = options.target;
-  });
-
-  canvas.on('mouse:out', function(options) {
-    hoverTarget = null;
-    prevHoverTarget = options.target;
-  });
-
-  canvas.on('after:render', function() {
-    if (hoverTarget) {
-
-      var hoveredPlanet = planets[hoverTarget.index];
-      var hoveredOrbit = orbits[hoveredPlanet.index];
-
-      hoveredOrbit.set({
-        strokeWidth: 3,
-        stroke: 'rgb(0,192,255)'
-      });
-
-      hoverCircle.set({
-        left: hoveredPlanet.left,
-        top: hoveredPlanet.top
-      });
-
-      planetLabel.set({
-        left: hoveredPlanet.left + 50,
-        top: hoveredPlanet.top + 20,
-        text: hoveredPlanet.name
-      });
-    }
-    else {
-      hoverCircle.set({ left: -100, top: -100 });
-      planetLabel.set({ left: -100, top: -100 });
-
-      prevHoverTarget &&
-      orbits[prevHoverTarget.index] &&
-      orbits[prevHoverTarget.index].set({
-        strokeWidth: 1,
-        stroke: 'rgba(0,192,255,0.5)'
-      });
-    }
-  });
-})();
+});

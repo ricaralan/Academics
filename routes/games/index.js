@@ -8,4 +8,8 @@ router.get("/", function (req, res) {
 	
 });
 
+router.get("/view", function (req, res) {
+	res.render("juegos/sistema_solar/view");
+});
+
 module.exports = router;
