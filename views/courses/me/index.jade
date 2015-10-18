@@ -10,8 +10,12 @@ block content
                 li <a href="#">Enseñando</a>
             //div(id="page")
                 textarea(id="redactor_content", name="content")
+            a(href="#create") create
+            div(ng-view)
 
 
     //link(rel="stylesheet" type="text/css" href="/javascripts/redactor/redactor.css")
     //script(src="/javascripts/redactor/redactor.js")
     //script(src="/javascripts/test.js")
+    script(src="/javascripts/angular/routes/courses.js")
+    script(src="/javascripts/angular/controllers/CoursesController.js")
