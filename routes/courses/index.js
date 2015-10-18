@@ -7,6 +7,10 @@ router.get("/", function(req, res) {
 	res.render("courses");
 });
 
+router.get("/content/:id", function(req, res) {
+	res.render("courses/content");
+});
+
 router.get("/me", function(req, res) {
 	// get pages with my courses "tomando", "enseñando", "favoritos"...
 	res.render("courses/me");

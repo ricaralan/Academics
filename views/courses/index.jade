@@ -9,11 +9,11 @@ block content
                 textarea(id="redactor_content", name="content")
             .container
                 ul(ng-controller="CoursesController",class="tabs", ng-init="initTabs()")
-                      li(class="tab col s3", ng-click="v('disponibles')")
+                      li(class="tab col s3", ng-click="changePath('disponibles')")
                         a(href="#disponibles", class="active") Cursos disponibles
-                      li(class="tab col s3", ng-click="v('own')")
+                      li(class="tab col s3", ng-click="changePath('own')")
                         a(href="#own") Mis cursos
-                      li(class="tab col s3", ng-click="v('juegos')")
+                      li(class="tab col s3", ng-click="changePath('juegos')")
                         a(href="#signUp") Juegos
             div(ng-view)
 

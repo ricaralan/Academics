@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+
+    div(ng-app="AcademicsModule")
+        app-for-users
+            .container
+                h3 Matematicas 1
+                div(class="row card")
+                    div(class="col s4 m4")
+                        img(src="/images/system/courses/matematicas.gif", width="100%")
+                    
+                    div(class="col s8 m8")
+                        p Descripción del curso
+                        p Este curso tiene la finalidad de apoyar el rápido aprendizaje del alumno y la iniciación en la practica de resolución de problemas para facilitar
+                div
+                    p Tabla de contenidos
+
+                div
+                    p Contenido del curso
+
+
+
+    //link(rel="stylesheet" type="text/css" href="/javascripts/redactor/redactor.css")
+    //script(src="/javascripts/redactor/redactor.js")
+    //script(src="/javascripts/test.js")
+    script(src="/javascripts/angular/routes/courses.js")
+    script(src="/javascripts/angular/controllers/CoursesController.js")
+    link(rel="stylesheet" type="text/css" href="/stylesheets/courses.css")
