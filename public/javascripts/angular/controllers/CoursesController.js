@@ -2,6 +2,12 @@ AcademicsModule.controller("CoursesController", ["$scope", "$http", "$routeParam
 
 	$scope.course = {};
 
+	$scope.getCourses = function() {
+		$http.get("/profile/get").success(function(data) {
+			$scope.profiles = data;
+		});
+	};
+
 	$scope.getLanguajes = function() {
 		$http.get("/languajes/get").success(function(languajes) {
 			$scope.languajes = languajes;
