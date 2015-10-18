@@ -4,10 +4,11 @@ block content
 
     div(ng-app="AcademicsModule")
         app-for-users
-            // primero creare todo lo referente a los cursos de las personas
-            div(ng-view)
+            //primero creare todo lo referente a los cursos de las personas
             //div
                 textarea(id="redactor_content", name="content")
+            div(class="container")
+                div(ng-view)
 
 
     //link(rel="stylesheet" type="text/css" href="/javascripts/redactor/redactor.css")
