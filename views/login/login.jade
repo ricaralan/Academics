@@ -1,19 +1,27 @@
 extends ../layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  a(href="/auth/twitter") Login con twitter
-  br
-  a(href="/auth/facebook") Login con facebook
-  br
-  br
-  br
-  br
-  br
+  
   div(ng-app="AcademicsModule")
-    div(ng-controller="LoginController")
-      form(ng-submit="authLogin('/')",class="col m6 s12")
+    div(class="container row")
+            div(class="contentLogin z-depth-3 col s8 offset-s2", ng-controller="LoginController")
+              .login-header
+                //p(class="login-title center") Login or Sign up
+                .row
+                  div(class="col s12")
+                    ul(class="tabs", ng-init="initTabs()")
+                      li(class="tab col s3")
+                        a(href="#signIn", class="active") Sign In
+                      li(class="tab col s3")
+                        a(href="#signUp") Sign up
+              div(class="row")
+
+
+                div(id="signIn", class="col s12 row")
+                  div(class=" col m6 s12 right")
+                    a(href="/auth/facebook", class="btn-facebook col s12") Sign in with facebook
+                    a(href="/auth/twitter", class="btn-twitter col s12") Sign in with twitter
+                  form(ng-submit="authLogin('/')",class="col m6 s12")
                     div(class="row")
                       div(class="input-field col s12")
                         i(class="material-icons prefix") perm_identity
@@ -23,8 +31,13 @@ block content
                         input(type="password", ng-model="password", placeholder="Password", required)
                       input(type="submit", value="Sign in", class="btn right")
 
-    div(ng-controller="UserController")
-      form(ng-submit="createUser()")
+
+                div(id="signUp", class="col s12")
+                  div(class=" col m6 s12 right")
+                    a(href="/auth/facebook", class="btn-facebook col s12") Sign up with facebook
+                    a(href="/auth/twitter", class="btn-twitter col s12") Sign in with twitter
+                  div(ng-controller="UserController",class="col m6 s12")
+                    form(ng-submit="createUser()")
                       div(class="input-field col s12")
                         i(class="material-icons prefix") picture_in_picture
                         input(type="text", ng-model="formUser.firstName", placeholder="First name", required)
@@ -47,3 +60,4 @@ block content
   script(src="/javascripts/angular/modules/AcademicsModule.js")
   script(src="/javascripts/angular/controllers/LoginController.js")
   script(src="/javascripts/angular/controllers/UserController.js")
+  link(href='/stylesheets/login.css' rel='stylesheet' type='text/css')

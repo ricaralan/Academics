@@ -4,13 +4,17 @@ block content
     div(ng-app="AcademicsModule")
         //app-for-users(user-photo="#{user.user_photo}")
         app-for-users
-            h3(class="center") console admin
-            a(href="#categories") categories
-            br
-            a(href="#sub_categories") sub_categories
-            br
-            a(href="#languajes") languajes
-            div(ng-view)
+            div(class="container")
+                table(class="card")
+                    tr
+                        td
+                            a(href="#categories") categories
+                            br
+                            a(href="#sub_categories") sub_categories
+                            br
+                            a(href="#languajes") languajes
+                        td
+                            div(ng-view)
             
     script(src="/javascripts/angular/routes/admin.js")
     script(src="/javascripts/angular/controllers/admin/CategoryController.js")

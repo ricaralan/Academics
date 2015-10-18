@@ -1,5 +1,4 @@
-h3 update view
-	div(ng-controller="LevelController", ng-init="setLevelUpdate();")
-		form(ng-submit="updateLevel()")
-			input(type="text", placeholder="Nivel", ng-model="level.level_name", required)
-			input(type="submit")
+div(ng-controller="LevelController", ng-init="setLevelUpdate();")
+	form(ng-submit="updateLevel()")
+		input(type="text", placeholder="Nivel", ng-model="level.level_name", required)
+		input(type="submit", class="btn")

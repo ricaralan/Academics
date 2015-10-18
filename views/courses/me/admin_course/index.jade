@@ -1,0 +1,10 @@
+extends ../../layout
+
+block content
+
+	div(ng-app="AcademicsModule")
+		app-for-users
+			div(ng-view)
+	
+	script(src="/javascripts/angular/routes/courses.js")
+	script(src="/javascripts/angular/controllers/CoursesController.js")

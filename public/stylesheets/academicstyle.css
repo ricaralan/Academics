@@ -46,3 +46,9 @@ nav ul li:hover, nav ul li:hover > .content-menu-nav-hover {
 	display: none;
 	border-radius: 0px 0px 20px 3px;
 }
+
+.card-title {
+	background-color: #000;
+	opacity: .7;
+	width: 100%;
+}

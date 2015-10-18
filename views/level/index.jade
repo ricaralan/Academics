@@ -1,10 +1,13 @@
 extends ../layout
 
 block content
-	h2 archivo index
 	div(ng-app="AcademicsModule", ng-controller="LevelController")
-		a(href="#create/") Create
-		div(ng-view)
+		app-for-users
+			.container
+				div(class="card")
+					a(href="#create/", class="btn right") Create
+					h3 Niveles
+					div(ng-view)
 
 
 	script(src="/javascripts/angular/routes/levels.js")

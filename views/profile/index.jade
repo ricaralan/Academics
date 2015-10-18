@@ -1,10 +1,14 @@
 extends ../layout
 
 block content
-	h2 archivo index
 	div(ng-app="AcademicsModule", ng-controller="ProfileController")
-		a(href="#create/") Create
-		div(ng-view)
+		app-for-users
+
+			div(class="container")
+				.card
+					a(href="#create/", class="btn right") Create
+					h3 Perfiles
+					div(ng-view)
 
 	script(src="/javascripts/angular/routes/profiles.js")
 	script(src="/javascripts/angular/controllers/ProfileController.js")

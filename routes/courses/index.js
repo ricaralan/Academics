@@ -12,13 +12,18 @@ router.get("/me", function(req, res) {
 	res.render("courses/me");
 });
 
+router.get("/showAllCourses", function(req, res) {
+	res.render("courses/showCourses");
+});
+
 router.get("/me/get/own", function(req, res) {
 	// get view with own courses
 	res.render("courses/me/showOwnCourses");
 });
 
-router.get("/me/admin", function(req, res) {
+router.get("/me/admin_course", function(req, res) {
 	// admin my own courses
+	res.render("courses/me/admin_course");
 });
 
 router.get("/me/get/:courseId", function(req, res) {
@@ -51,9 +56,13 @@ router.post("/create", function(req, res) {
 	}
 });
 
-router.get("/update-basic-data", function(req, res) {
+router.get("/description_course/:course_id", function(req, res) {
+
+});
+
+router.get("/update-basic-data/:course_id", function(req, res) {
 	// get view update basic data
-	res.render("courses/me/updateBasicData");
+	res.render("courses/me/admin_course/updateBasicData");
 });
 
 router.put("/update/:course_id", function(req, res) {
