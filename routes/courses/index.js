@@ -12,6 +12,10 @@ router.get("/me", function(req, res) {
 	res.render("courses/me");
 });
 
+router.get("/showAllCourses", function(req, res) {
+	res.render("courses/showCourses");
+});
+
 router.get("/me/get/own", function(req, res) {
 	// get view with own courses
 	res.render("courses/me/showOwnCourses");
