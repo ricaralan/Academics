@@ -18,6 +18,7 @@ nav ul li:hover, nav ul li:hover > .content-menu-nav-hover {
 	//background-color: #2c3849 !important;
 	background-color: #4a5664 !important;
 	display: block;
+	z-index: 999999;
 }
 
 #img-avatar a {
@@ -51,4 +52,30 @@ nav ul li:hover, nav ul li:hover > .content-menu-nav-hover {
 	background-color: #000;
 	opacity: .7;
 	width: 100%;
+}
+
+#listaCursos {
+	background-color: #fff;
+	position: relative;
+	min-width: 180px;
+	position: fixed;
+}
+
+#listaCursos li a {
+	padding-left: 10px;
+}
+
+.tabs {
+	background-color: #4a5664;
+}
+.tabs .indicator {
+	background-color: #fff;
+	height: 4px;
+	border-bottom: solid 2px #4a5664;
+}
+.tab > a{
+	color: #4a5664 !important;
+}
+.tab:hover > a{
+	text-shadow: 1px 1px 7px rgba(255, 255, 255, .6);
 }
