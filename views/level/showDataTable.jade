@@ -1,9 +1,9 @@
 div(ng-init="getLevels()")
-	table
+	table(class="bordered")
 		tr
 			th Nombre
 			th 
 		tr(ng-repeat="level in levels")
 			td {{ level.level_name }}
 			td
-				a(href="#update/{{ level.level_id }}") Actualizar
+				a(href="#update/{{ level.level_id }}", class="btn blue right") Actualizar

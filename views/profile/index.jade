@@ -2,8 +2,12 @@ extends ../layout
 
 block content
 	div(ng-app="AcademicsModule", ng-controller="ProfileController")
-		a(href="#create/") Create
-		div(ng-view)
+		app-for-users
+
+			div(class="container")
+				.card
+					a(href="#create/", class="btn right") Create
+					div(ng-view)
 
 	script(src="/javascripts/angular/routes/profiles.js")
 	script(src="/javascripts/angular/controllers/ProfileController.js")
