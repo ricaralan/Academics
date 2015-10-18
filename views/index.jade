@@ -1,0 +1,238 @@
+doctype html(lang='ES')
+head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    |   
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no')
+    |   
+    title Academics
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='msapplication-tap-highlight', content='no')
+    |     
+    meta(name='description', content='Plataforma web para el autoaprendizaje y complemento educativo')
+    // Favicons
+    link(rel='icon', href='images/favicon.ico', sizes='32x32')
+    // CSS
+    link(href='font/material-design-icons/Material-Design-Icons.woff2', rel='stylesheet')
+    |     
+    link(href='css/materialize.min.css', type='text/css', rel='stylesheet', media='screen,projection')
+    |     
+    link(href='/stylesheets/style2.css', type='text/css', rel='stylesheet', media='screen,projection')
+  body
+    nav
+      .nav-wrapper
+        a.brand-logo(href='#')
+          img(src='images/logo.png')
+        |       
+        ul#slide-out.side-nav
+          li
+            a(href='#index')
+              i.tiny.mdi-action-home.left
+              | Inicio
+          |         
+          li
+            a(href='#about')
+              i.tiny.mdi-action-info.left
+              | Quienes Somos
+          |         
+          li
+            a(href='#mision')
+              i.tiny.mdi-action-trending-up.left
+              | Misi&oacute;n y Visi&oacute;n
+          |         
+          li
+            a(href='#service')
+              i.tiny.mdi-action-view-list.left
+              | Servicios
+          |         
+          li
+            a(href='#container')
+              i.tiny.mdi-file-folder-shared.left
+              | Contenidos
+        |       
+        ul.right.hide-on-med-and-down
+          li
+            a(href='#index')
+              i.tiny.mdi-action-home.left
+              | Inicio
+          |         
+          li
+            a(href='#about')
+              i.tiny.mdi-action-info.left
+              | Quienes Somos
+          |         
+          li
+            a(href='#mision')
+              i.tiny.mdi-action-trending-up.left
+              | Misi&oacute;n y Visi&oacute;n
+          |         
+          li
+            a(href='#service')
+              i.tiny.mdi-action-view-list.left
+              | Servicios
+          |         
+          li
+            a(href='#')
+              i.tiny.mdi-file-folder-shared.left
+              | Contenidos
+        |       
+        a.button-collapse(href='#', data-activates='slide-out')
+          i.mdi-navigation-menu
+    |   
+    #index.parallax-container
+      .section.no-pad-bot
+        .container
+          br
+          br
+          |           
+          |         
+          .row
+            br
+            br
+            |           
+            h5.header.left.light
+              | &quot;La educaci&oacute;n es el arma m&aacute;s poderosa 
+              br
+              | que puedes usar para cambiar el mundo&quot;.
+              br
+              br
+              |  
+              span.right-align &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nelson Mandela
+          |         
+          .row
+            // Modal Trigger
+            a.btn-large.waves-effect.waves-light.btn.modal-trigger.left(href='#login')
+              i.tiny.mdi-action-input.left
+              | Entrar
+            // Modal Structure
+            #login.modal
+              .modal-content
+                h4 Modal Header
+                |               
+                p A bunch of text
+              |             
+              .modal-footer
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Agree
+          |         
+          br
+          br
+      |     
+      .parallax
+        img(src='images/background1.jpg', alt='Unsplashed background img 1')
+    |   
+    .container
+      .section
+        // Icon Section
+        #service.row
+          .col.s12.m4.l4
+            .icon-block
+              h2.center.brown-text
+                i.mdi-action-view-list
+              |             
+              h5.center Vinculaci&oacute;n padre-alumno
+              |             
+              p.light
+                | Crear un ambiente de interacci&oacute;n que permita mejorar la relaci&oacute;n entre padres e hijos, para de esta forma sentar las bases para un mejor aprovechamiento academico mediante un vinculo virtual a traves de nuestra platafroma.
+          |         
+          .col.s12.m4.l4
+            .icon-block
+              h2.center.brown-text
+                i.mdi-action-view-list
+              |             
+              h5.center Aprender ense&ntilde;ando
+              |             
+              p.light
+                | Estimular la relacion interpersonal entre los ni&ntilde;os para que entre ellos mismo generen un ambiente de conocimiento.
+          |         
+          .col.s12.m4.l4
+            .icon-block
+              h2.center.brown-text
+                i.mdi-action-view-list
+              |             
+              h5.center Era del conocimeinto
+              |             
+              p.light
+                | Facilitar el acceso al conocimiento, mediante la unificaci&oacute;n de la informai&oacute;n dispersada en toda la red.
+        |         
+        .row
+          .col.s12.m4.l4
+            .icon-block
+              h2.center.brown-text
+                i.mdi-action-view-list
+              |             
+              h5.center El saber tecnol&oacute;gico
+              |             
+              p.light
+                | Fomentar el uso de las tecnolog&iacute;as de la informaci&oacute;n para que el ni&ntilde;o las perciba dentro su formacion academica.
+          |         
+          .col.s12.m4.l4
+            .icon-block
+              h2.center.brown-text
+                i.mdi-action-view-list
+              |             
+              h5.center Trasformaci&oacute;n educativa
+              |             
+              p.light
+                | Generar una cultura para que el ni&ntilde;o perciba la educacion como un medio para generar valor dentro de la sociedad actual por medio de las TI
+          |         
+          .col.s12.m4.l4
+            .icon-block
+              h2.center.brown-text
+                i.mdi-action-view-list
+              |             
+              h5.center Trasmisi&oacute;n de conocimiento por contexto
+              |             
+              p.light
+                | Adecuarse a las diferentes formas de aprendizaje y cacidades cognositivas que tiene cada ni&ntilde;o.
+    // Contenidos
+    #container.parallax-container.valign-wrapper
+      .section.no-pad-bot
+        .container
+          .row.center
+            h5.header.col.s12.light &ldquo;Familia y escuela, dos contextos y un solo ni&ntilde;o&rdquo;
+      |     
+      .parallax
+        img(src='images/background2.jpg', alt='Unsplashed background img 2')
+    // Acerca de nosotros
+    #about.container
+      .section
+        .row
+          .col.s12.center
+            h3
+              i.mdi-content-send.brown-text
+            |           
+            h4 Acerca de nosotros
+            |           
+            p.left-align.light
+              | Somos un grupo de jovenes estudiantes universitariosque a traves de las herramientasque ofrecen las tecnolog&iacute;as de la informaci&oacute;n queremos brindar una opci&oacute;n, dinamica y divertida, de aprendizaje para los ni&ntilde;os.
+            br
+            |           
+            p.left-align.light
+              | Generar una cultura de aprendizaje a los ni&ntilde;os que permita percibir en la educaci&oacute;n un factor valioso para enriquecer a la sociedad.
+    // Misión y visión
+    #mision.parallax-container.valign-wrapper
+      .section.no-pad-bot
+        .container
+          .row.center
+            h5.header.col.s12.light
+              | &ldquo;Si no eres parte de la soluci&oacute;n, eres parte del problema&rdquo; 
+              br
+              |           (Proverbio oriental)
+      |     
+      .parallax
+        img(src='images/background3.jpg', alt='Unsplashed background img 3')
+    |   
+    footer.page-footer.teal
+      .footer-copyright
+        .container
+          | Derechos Reservados 2015 
+          a.brown-text.text-lighten-3(href='')  Academics
+    // Scripts
+    script(src='/materialize/js/jquery.min.js')
+    |   
+    script(src='/materialize/js/materialize.min.js')
+    |   
+    script(src='js/init.js')
